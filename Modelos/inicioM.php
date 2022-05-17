@@ -1,7 +1,6 @@
-<?php 
-	
-require_once "ConexionBD.php";
+<?php
 
+require_once "ConexionBD.php";
 
 class InicioM extends ConexionBD{
 
@@ -13,18 +12,14 @@ class InicioM extends ConexionBD{
 
 		$pdo -> execute();
 
-		return $pdo -> fetch();
+		return $pdo-> fetch();
 
 		$pdo->close();
-
 		$pdo = null;
-
-
 
 	}
 
 
-	//actualizar inicio
 	static public function ActualizarInicioM($tablaBD, $datosC){
 
 		$pdo = ConexionBD::cBD()->prepare("UPDATE $tablaBD SET intro = :intro, direccion = :direccion, horaE = :horaE, horaS = :horaS, telefono = :telefono, correo = :correo, logo = :logo, favicon = :favicon WHERE id = :id");
@@ -39,21 +34,14 @@ class InicioM extends ConexionBD{
 		$pdo -> bindParam(":logo", $datosC["logo"], PDO::PARAM_STR);
 		$pdo -> bindParam(":favicon", $datosC["favicon"], PDO::PARAM_STR);
 
+
 		if($pdo -> execute()){
-
-			return true; 
-
+			return true;
 		}
 
 		$pdo->close();
-
 		$pdo = null;
 
 	}
 
-
-
 }
-
-
-?>

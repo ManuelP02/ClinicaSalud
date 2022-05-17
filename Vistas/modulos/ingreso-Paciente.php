@@ -49,10 +49,11 @@
   </div>
   <!-- /.login-box-body -->
 </div>
+</div>
  <footer class="bg-dark text-center text-white">
   <!-- Grid container -->
     <!-- Section: Social media -->
-  </div>
+
   <!-- Grid container -->
 
   <!-- Copyright -->

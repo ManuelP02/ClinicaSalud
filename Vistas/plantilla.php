@@ -196,7 +196,10 @@ session_start();
 
       hiddenDays: [0,6],
       defaultView: 'agendaWeek',
-
+       selectable: true,
+         validRange: {
+      start: new Date(),
+    },
         events: [
 
           <?php 
@@ -308,22 +311,21 @@ session_start();
         $('#fyhFC').val(fecha[0]+" "+horaFinal+":00:00"); 
 
       },
-      eventClick: function(events){
-         
+      eventClick: function(jsEvent){
         if(confirm("¿Desea eliminar esta cita?")){
-          var idcita = events["idcita"];
+          var idcita = jsEvent["idcita"];
           $.ajax({
             url: "http://localhost/clinica/Modelos/borrarCita.php",
             type: "POST",
             data: {idcita:idcita},
             success:function(){
-              alert(idcita);
               alert("Cita eliminada");
             }
           })
 
         }
-      }
+      
+    }
 
 
     })

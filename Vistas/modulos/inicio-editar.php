@@ -1,14 +1,14 @@
-<?php 
+<?php
 
 if($_SESSION["rol"] != "Administrador"){
 
 	echo '<script>
 
 	window.location = "inicio";
-
 	</script>';
 
 	return;
+
 }
 
 ?>
@@ -28,12 +28,8 @@ if($_SESSION["rol"] != "Administrador"){
 				$editarInicio -> ActualizarInicioC();
 
 				?>
-
-
-
-
 				
-	
+				
 
 			</div>
 
