@@ -15,8 +15,8 @@
           <li><a href="ingreso-Administrador">Administrador</a></li>
         </ul>
       </li>
-      <li><a href="#">Sobre nosotros</a></li>
       <li><a href="#">Contacto</a></li>
+       <li><a href="#">¿Quiénes somos?</a></li>
     </ul>
   </div>
 </nav><br>

@@ -83,7 +83,7 @@ session_start();
       include "modulos/menuDoctor.php";
       include "modulos/cabecera.php";
 
-    }else if($_SESSION["rol"] == "Administrador"){
+    }else if($_SESSION["rol"] == "Administrador" && $_GET["url"] != "pdfCons"){
 
       include "modulos/menuAdministrador.php";
       include "modulos/cabecera.php";
@@ -98,7 +98,7 @@ session_start();
 
       $url = explode("/", $_GET["url"]);
 
-      if($url[0] == "inicio" || $url[0] == "salir" || $url[0] == "perfil-Secretaria"  || $url[0] == "perfil-S"   || $url[0] == "consultorios"  || $url[0] == "E-C" || $url[0] == "E-S" || $url[0] == "servicios" || $url[0] == "doctores" || $url[0] == "pacientes" || $url[0] == "atencion" || $url[0] == "perfil-Paciente" || $url[0] == "perfil-P" || $url[0] == "Ver-consultorios" || $url[0] == "Doctor" || $url[0] == "historial" || $url[0] == "CrearAtencion" || $url[0] == "historialclinico" || $url[0] == "CrearReceta" || $url[0] == "perfil-Doctor" || $url[0] == "perfil-D" || $url[0] == "Citas"|| $url[0] == "perfil-Administrador" || $url[0] == "perfil-A" || $url[0] == "pdfhist" || $url[0] == "secretarias" || $url[0] == "inicio-editar" || $url[0] == "historialpacient" || $url[0] == "Recetas" || $url[0] == "VerReceta" || $url[0] == "pdfrec" || $url[0] == "GestRecet" || $url[0] == "borrarCita.php"){
+      if($url[0] == "inicio" || $url[0] == "salir" || $url[0] == "perfil-Secretaria" || $url[0] == "perfil-S"   || $url[0] == "consultorios"  || $url[0] == "E-C" || $url[0] == "E-S" || $url[0] == "servicios" || $url[0] == "doctores" || $url[0] == "pacientes" || $url[0] == "atencion" || $url[0] == "perfil-Paciente" || $url[0] == "perfil-P" || $url[0] == "Ver-consultorios" || $url[0] == "Doctor" || $url[0] == "historial" || $url[0] == "CrearAtencion" || $url[0] == "historialclinico" || $url[0] == "CrearReceta" || $url[0] == "perfil-Doctor" || $url[0] == "perfil-D" || $url[0] == "Citas"|| $url[0] == "perfil-Administrador" || $url[0] == "perfil-A" || $url[0] == "pdfhist" || $url[0] == "secretarias" || $url[0] == "inicio-editar" || $url[0] == "historialpacient" || $url[0] == "Recetas" || $url[0] == "VerReceta" || $url[0] == "pdfrec" || $url[0] == "GestRecet" || $url[0] == "borrarCita.php" || $url[0] == "repCons" || $url[0] == "pdfCons" || $url[0] == "repDoct"){
 
         include "modulos/".$url[0].".php";
 
@@ -135,6 +135,7 @@ session_start();
     }else if($_GET["url"] == "ingreso-Administrador"){
 
       include "modulos/ingreso-Administrador.php";
+   
     }
 
   }else {

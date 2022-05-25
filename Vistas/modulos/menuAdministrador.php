@@ -41,7 +41,19 @@
             <span>Servicios</span>
           </a>
         </li>
-          
+    <li class="treeview active">
+              <a href="#">
+                <i class="fa fa-calculator"></i>
+                <span>Informes de servicios</span>
+                 <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu" style="display: none;">
+                <li><a href="repCons"><i class="fa fa-circle-o"></i> Por consultorios</a></li>
+                <li><a href="repDoct"><i class="fa fa-circle-o"></i> Por doctores</a></li>
+                <li><a href="pdfCons" target="_blank"><i class="fa fa-circle-o"></i>Todos los servicios</a></li>
+               <!--  <li><a href="pdfCons" target="_blank"><i class="fa fa-circle-o"></i> Todos los doctores</a></li> -->
+              </ul>
+            </li>
          
             
 
