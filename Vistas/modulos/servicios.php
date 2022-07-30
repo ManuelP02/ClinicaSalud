@@ -26,12 +26,16 @@ if($_SESSION["rol"] != "Administrador"){
 
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Nombre de servicio (*):</label>
-                            <input type="text" class="form-control" required name="servicioN" maxlength="50" placeholder="Nombre">
+                            <input type="text" class="form-control" required name="servicioN" maxlength="50" placeholder="Nombre"
+                            oninvalid="this.setCustomValidity('Ingrese el nombre del servicio')"
+                            oninput="this.setCustomValidity('')"
+                            >
                           </div>
 
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Costo (*) DOP:</label>
-                            <input type="number" class="form-control" required name="costoservicioN" placeholder="Costo" >
+                            <input type="number" class="form-control" required name="costoservicioN" placeholder="Costo" oninvalid="this.setCustomValidity('Ingrese el costo del servicio')"
+    oninput="this.setCustomValidity('')">
                           </div>
                           
                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -84,7 +88,7 @@ if($_SESSION["rol"] != "Administrador"){
 						<th>Nombre</th>
 						<th>Costo</th>
             <th>Consultorio</th>
-						<th>Eliminar</th>
+						<th>Opciones</th>
 					</tr>
            </thead>
         <tbody> 
@@ -121,7 +125,7 @@ if($_SESSION["rol"] != "Administrador"){
               </div>
 							<div class="btn-group">
 
-								<a href="http://localhost/clinica/servicios/'.$value["idservicio"].'"">
+								<a  onclick="return confirm(\'¿Seguro que desea eliminar el servicio de '.$value["nombre"].' que pertenece al Consultorio de '.$consultorio["nombreconsultorio"].'?\')"href="http://localhost/clinica/servicios/'.$value["idservicio"].'"">
 									<button class="btn btn-danger"> Borrar </button>
 								</a>
 							</div>

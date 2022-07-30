@@ -34,14 +34,14 @@ if($_SESSION["rol"] != "Secretaria" && $_SESSION["rol"] != "Administrador"){
 						
 					<tr>
 						
-						<th>N°</th>
+						
 						<th>Apellido</th>
 						<th>Nombre</th>
 						<th>Foto</th>
 						<th>Consultorio</th>
 						<th>Usuario</th>
 						<th>Contraseña</th>
-						<th>Editar / Borrar</th>
+						<th>Opciones</th>
 					</tr>
 
 				</thead>
@@ -57,7 +57,7 @@ if($_SESSION["rol"] != "Secretaria" && $_SESSION["rol"] != "Administrador"){
 					foreach ($resultado as $key => $value) {
 						echo '<tr>
 						
-						<td>'.($key+1).'</td>
+						
 
 						<td>'.$value["apellido"].'</td>
 
@@ -89,7 +89,7 @@ if($_SESSION["rol"] != "Secretaria" && $_SESSION["rol"] != "Administrador"){
 								<button class="btn btn-success EditarDoctor" Did="'.$value["id"].'" data-toggle="modal" data-target="#EditarDoctor">Editar</button>
 									</div>
 									<div class="btn-group">	
-									<button class="btn btn-danger EliminarDoctor" Did="'.$value["id"].'" imgD="'.$value["foto"].'">Borrar</button>
+									<button id="datos" data-toggle="modal" data-target="#EliminarDoctor" class="btn btn-danger" Did="'.$value["id"].'" imgD="'.$value["foto"].'">Borrar</button>
 							</div>
 
 						</td>
@@ -189,7 +189,7 @@ if($_SESSION["rol"] != "Secretaria" && $_SESSION["rol"] != "Administrador"){
 							
 							<h2>Usuario:</h2>
 
-							<input type="text" class="form-control input-lg" name="usuario" required>
+							<input type="text" class="form-control input-lg" id="usuario" name="usuario" required>
 
 						</div>
 						<div class="form-group">
@@ -236,8 +236,8 @@ if($_SESSION["rol"] != "Secretaria" && $_SESSION["rol"] != "Administrador"){
 		
 		<div class="modal-content">
 			
-			<form method="POST" role="form">
-
+			<form method="post" role="form">
+				
 				<div class="modal-body">
 					
 					<div class="box-body">
@@ -246,7 +246,8 @@ if($_SESSION["rol"] != "Secretaria" && $_SESSION["rol"] != "Administrador"){
 							
 							<h2>Apellido:</h2>
 
-				<input type="text" class="form-control input-lg" id="apellidoE" name="apellidoE" required>
+							<input type="text" class="form-control input-lg" id="apellidoE" name="apellidoE" required>
+
 							<input type="hidden" id="Did" name="Did">
 
 						</div>
@@ -255,21 +256,23 @@ if($_SESSION["rol"] != "Secretaria" && $_SESSION["rol"] != "Administrador"){
 							
 							<h2>Nombre:</h2>
 
-				<input type="text" class="form-control input-lg" id="nombreE" name="nombreE" required>
+							<input type="text" class="form-control input-lg" id="nombreE" name="nombreE" required>
 
 						</div>
 
 
 						<div class="form-group">
+							
 							<h2>Sexo:</h2>
+
 							<select class="form-control input-lg" name="sexoE" required="">
 								
 								<option id="sexoE"></option>
+
 								<option value="Masculino">Masculino</option>
 								<option value="Femenino">Femenino</option>
 
 							</select>
-
 
 						</div>
 
@@ -280,6 +283,7 @@ if($_SESSION["rol"] != "Secretaria" && $_SESSION["rol"] != "Administrador"){
 							<input type="text" class="form-control input-lg" id="usuarioE" name="usuarioE" required>
 
 						</div>
+
 						<div class="form-group">
 							
 							<h2>Contraseña:</h2>
@@ -288,23 +292,23 @@ if($_SESSION["rol"] != "Secretaria" && $_SESSION["rol"] != "Administrador"){
 
 						</div>
 
-
 					</div>
 
 				</div>
-				
+
+
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-success">Guardar cambios</button>
+					
+					<button type="submit" class="btn btn-success">Guardar Cambios</button>
+
 					<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
 
 				</div>
 
-				<?php 
+				<?php
 
 				$actualizar = new DoctoresC();
 				$actualizar -> ActualizarDoctorC();
-
-
 
 				?>
 
@@ -313,7 +317,6 @@ if($_SESSION["rol"] != "Secretaria" && $_SESSION["rol"] != "Administrador"){
 		</div>
 
 	</div>
-
 
 </div>
 

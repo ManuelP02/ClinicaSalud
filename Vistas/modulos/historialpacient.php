@@ -33,7 +33,10 @@ echo'
 
     <div class="content-wrapper">
    <section class="content-header">
-     <h1>Historial Clínico de '.$_SESSION["nombre"].' '.$_SESSION["Apaterno"].' '.$_SESSION["Amaterno"].'</h1>
+   <center>
+     <h2>Su Historial Clínico '.$_SESSION["nombre"].' '.$_SESSION["Apaterno"].' '.$_SESSION["Amaterno"].'</h2>
+      <a href="http://localhost/clinica/inicio" <button class="btn btn-danger"> Regresar <i class="fa fa-arrow-left"></i></button></a>
+     </center>
    </section>
 
    <section class="content">
@@ -105,7 +108,23 @@ echo'
                <br>
                <label>Fecha creación de historial:</label>
 
-               <input type="date" class="form-control" readonly name="fechaE" value="'.$resultado["fecha"].'">';
+               <input type="date" class="form-control" readonly name="fechaE" value="'.$resultado["fecha"].'">
+               <br>
+               <label>Actualizaciones:</label>';
+              $text=$resultado["actualizaciones"];
+               echo'
+               <br>
+                <textarea class="form-control" readonly name="actualizaciones" required rows="7">';?>
+
+                <?php echo $text; ?>
+
+                </textarea>
+                <?php
+                echo'
+               <br>
+               <label>Ultima fecha de actualización:</label>
+                  <input type="date" readonly class="form-control" name="fechaAct" value="'.$resultado["fechaAct"].'">
+               ';
 
                 
         
@@ -114,7 +133,7 @@ echo'
 
              <center>
 <button class="btn btn-success" type="submit"> Descargar historial en PDF <i class="fa fa-download"></button></i>
-     <a href="http://localhost/clinica/inicio" <button class="btn btn-danger"> Regresar</button></a>
+
     
 </center>
            </div>

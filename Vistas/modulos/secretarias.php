@@ -40,7 +40,7 @@ if($_SESSION["rol"] != "Administrador"){
 						<th>Foto</th>
 						<th>Usuario</th>
 						<th>Contraseña</th>
-						<th>Borrar</th>
+						<th>Opciones</th>
 					</tr>
 
 				</thead>
@@ -79,10 +79,10 @@ if($_SESSION["rol"] != "Administrador"){
 						<td>'.$value["clave"].'</td>
 
 						<td>
+						<div class="btn-group">
+				<button class="btn btn-success EditarSecretaria" data-toggle="modal" Sid="'.$value["id"].'" data-target="#EditarSecretaria">Editar</button></div>
 							<div class="btn-group">
-					
-
-				<button class="btn btn-danger EliminarSecretaria" Sid="'.$value["id"].'" imgS="'.$value["foto"].'">Borrar secretaria</button>
+			<button id="datos" data-toggle="modal" data-target="#EliminarSecretaria" class="btn btn-danger" Sid="'.$value["id"].'" imgS="'.$value["foto"].'">Borrar</button>
 							</div>
 
 						</td>

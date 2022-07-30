@@ -33,6 +33,17 @@
           </a>
         </li>
 
+                 <li>
+                          <?php
+
+          echo'<a href="http://localhost/clinica/historialdoctor/'.$_SESSION["id"].'">';
+            
+                          ?>
+            <i class="fa fa-history"></i>
+            <span>Historial de citas</span>
+          </a>
+        </li>
+
 
 
       </ul>

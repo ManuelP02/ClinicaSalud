@@ -62,7 +62,7 @@ $resultado = DoctoresM::CrearDoctorM($tablaBD, $datosC);
 
 			$tablaBD = "doctores";
 
-			$datosC = array("id"=>$_POST["Did"], "apellido"=>$_POST["apellidoE"], "nombre"=>$_POST["nombreE"],  "sexo"=>$_POST["sexoE"],  "usuario"=>$_POST["usuarioE"],  "clave"=>$_POST["claveE"]);
+			$datosC = array("id"=>$_POST["Did"], "apellido"=>$_POST["apellidoE"], "nombre"=>$_POST["nombreE"], "sexo"=>$_POST["sexoE"], "usuario"=>$_POST["usuarioE"], "clave"=>$_POST["claveE"]);
 
 			$resultado = DoctoresM::ActualizarDoctorM($tablaBD, $datosC);
 
@@ -103,11 +103,15 @@ public function BorrarDoctorC(){
 
 		if($resultado == true){
 
-			echo'<script>
+			echo'
 
-			window.location = "doctores";
+				<script type="text/javascript">
+  					alert("Doctor eliminado exitosamente");
+						</script>
+				<script>
+				window.location = "doctores";
+				</script>';
 
-			</script>';
 
 		}
 

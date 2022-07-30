@@ -1,5 +1,4 @@
 <?php 
-
 class InicioC{
 
 	public function MostrarInicioC(){
@@ -9,8 +8,9 @@ class InicioC{
 		$id = "1";
 
 		$resultado = InicioM::MostrarInicioM($tablaBD, $id);
+		if($_SESSION["rol"] != "Doctor" && $_SESSION["rol"] != "Paciente" && $_SESSION["rol"] != "Secretaria"){
 
-		echo'
+					echo'
 		<center><img src="'.$resultado["logo"].'" class="img-responsive"></center> <br>
                   <div class="box">
 		                  <div class="box-body">
@@ -32,12 +32,237 @@ class InicioC{
                              <h2>Contactos:</h2>
                              <h3>Teléfono: '.$resultado["telefono"].'</h3>
                               <h3>'.$resultado["correo"].'</h3>
-                            
-                      </div>
+                      </div>';
 
+		}
+                      if($_SESSION["rol"] == "Doctor"){
+                 	
+                      	echo'
+		<center><img src="'.$resultado["logo"].'" class="img-responsive"></center> <br>
+                  <div class="box">
+		                  <div class="box-body">
+                        <div class="col-md-6 bg-primary" style="border-radius: 15px;background-image: linear-gradient(to bottom, #3c8dbc,#3c8dbc,#3c8dbc	,#54798d, #54798d);">
+                        
+                          <h2>¿Quiénes somos?</h2>
+
+                           <h3>'.$resultado["intro"].'</h3>
+
+                           <hr>
+
+                           <h2>Horario:</h2>
+                            <h3>'.$resultado["horaE"].' AM</h3>
+                             <h3>'.$resultado["horaS"].' PM</h3>
+                             <hr>
+                             <h2>Dirección:</h2>
+                             <h3>'.$resultado["direccion"].'</h3>
+                             <hr>
+                             <h2>Contactos:</h2>
+                             <h3>Teléfono: '.$resultado["telefono"].'</h3>
+                              <h3>'.$resultado["correo"].'</h3>
+                      </div>';
+
+
+require "cone.php";
+     $pac = "SELECT COUNT(*) idcita FROM citas WHERE id_doctor = '".$_SESSION['id']."'";
+$resultpac = $mysqli->query($pac);
+$pacientes = $resultpac->fetch_assoc();
+                 	                       echo'
+                      <div class="col-lg-6 col-xs-6">
+<br>
+<div class="small-box bg-aqua">
+<div class="inner">
+<h3>'.$pacientes['idcita'].'</h3>
+<h3>Pacientes atendidos<h3>
+</div>
+<div class="icon">
+<i class="ion-medkit"></i>
+</div>
+<a href="#" class="small-box-footer">Más información  <i class="fa fa-arrow-circle-right"></i></a>
+</div>
+<br>';	
+require "cone.php";
+     $serv = "SELECT COUNT(*) idservicio FROM recetas WHERE id_doctor = '".$_SESSION['id']."'";
+$resultserv = $mysqli->query($serv);
+$servicios = $resultserv->fetch_assoc();
+echo'
+<div class="small-box bg-orange">
+<div class="inner">
+<h3>'.$servicios['idservicio'].'</h3>
+<h3>Servicios brindados</h3>
+</div>
+<div class="icon">
+<i class="ion-pricetag"></i>
+</div>
+<a href="#" class="small-box-footer">Más información  <i class="fa fa-arrow-circle-right"></i></a>
+</div>';
+require "cone.php";
+     $cobrado = "SELECT SUM(pago) AS pago FROM recetas WHERE id_doctor = '".$_SESSION['id']."'";
+$resultcobr = $mysqli->query($cobrado);
+$cobros = $resultcobr->fetch_assoc();
+echo'
+<br>
+<div class="small-box bg-green">
+<div class="inner">
+<h3>'.$cobros['pago'].' DOP</h3>
+<h3>Total ganancias</h3>
+</div>
+<div class="icon">
+<i class="ion-plus	"></i>
+</div>
+<a href="#" class="small-box-footer">Más información  <i class="fa fa-arrow-circle-right"></i></a>
+</div>
+
+
+
+
+                      	 
 
 
 		';
+                     
+                       }
+
+
+  if($_SESSION["rol"] == "Paciente"){
+                 	
+                      	echo'
+		<center><img src="'.$resultado["logo"].'" class="img-responsive"></center> <br>
+                  <div class="box">
+		                  <div class="box-body">
+                        <div class="col-md-6 bg-primary" style="border-radius: 15px;background-image: linear-gradient(to bottom, #3c8dbc,#3c8dbc,#3c8dbc	,#54798d, #54798d);">
+                        
+                          <h2>¿Quiénes somos?</h2>
+
+                           <h3>'.$resultado["intro"].'</h3>
+
+                           <hr>
+
+                           <h2>Horario:</h2>
+                            <h3>'.$resultado["horaE"].' AM</h3>
+                             <h3>'.$resultado["horaS"].' PM</h3>
+                             <hr>
+                             <h2>Dirección:</h2>
+                             <h3>'.$resultado["direccion"].'</h3>
+                             <hr>
+                             <h2>Contactos:</h2>
+                             <h3>Teléfono: '.$resultado["telefono"].'</h3>
+                              <h3>'.$resultado["correo"].'</h3>
+                      </div>';
+
+
+require "cone.php";
+$documento = $_SESSION['documento'];
+$consulta = "SELECT * FROM citas WHERE documento = $documento ORDER BY inicio DESC";
+$citas = $mysqli->query($consulta);
+$pacientes = $citas->fetch_assoc();
+                 	                       echo'
+                      <div class="col-lg-6 col-xs-6">
+<br>
+<div class="small-box bg-aqua">
+<div class="inner">
+<h3>'.$pacientes['inicio'].'</h3>
+<h3>Su última cita<h3>
+</div>
+<div class="icon">
+<i class="ion-medkit"></i>
+</div>
+<a href="#" class="small-box-footer">Más información  <i class="fa fa-arrow-circle-right"></i></a>
+</div>
+<br>';
+
+require "cone.php";
+$idpaciente = $_SESSION['idpaciente'];
+$consulta = "SELECT COUNT(*) idreceta FROM recetas WHERE idpaciente = $idpaciente ";
+$citas = $mysqli->query($consulta);
+$pacientes = $citas->fetch_assoc();
+echo'
+<div class="small-box bg-green">
+<div class="inner">
+<h3>'.$pacientes['idreceta'].'</h3>
+<h3>Recetas generadas<h3>
+</div>
+<div class="icon">
+<i class="ion-folder"></i>
+</div>
+<a href="http://localhost/clinica/Recetas/'.$_SESSION["idpaciente"].'" class="small-box-footer">Más información  <i class="fa fa-arrow-circle-right"></i></a>
+</div>
+
+
+
+';	
+                       }  
+
+        if($_SESSION["rol"] == "Secretaria"){
+                 	
+                      	echo'
+		<center><img src="'.$resultado["logo"].'" class="img-responsive"></center> <br>
+                  <div class="box">
+		                  <div class="box-body">
+                        <div class="col-md-6 bg-primary" style="border-radius: 15px;background-image: linear-gradient(to bottom, #3c8dbc,#3c8dbc,#3c8dbc	,#54798d, #54798d);">
+                        
+                          <h2>¿Quiénes somos?</h2>
+
+                           <h3>'.$resultado["intro"].'</h3>
+
+                           <hr>
+
+                           <h2>Horario:</h2>
+                            <h3>'.$resultado["horaE"].' AM</h3>
+                             <h3>'.$resultado["horaS"].' PM</h3>
+                             <hr>
+                             <h2>Dirección:</h2>
+                             <h3>'.$resultado["direccion"].'</h3>
+                             <hr>
+                             <h2>Contactos:</h2>
+                             <h3>Teléfono: '.$resultado["telefono"].'</h3>
+                              <h3>'.$resultado["correo"].'</h3>
+                      </div>';
+
+
+require "cone.php";
+$consulta = "SELECT COUNT(*) idcita FROM citas";
+$citas = $mysqli->query($consulta);
+$sec = $citas->fetch_assoc();
+                 	                       echo'
+                      <div class="col-lg-6 col-xs-6">
+<br>
+<div class="small-box bg-aqua">
+<div class="inner">
+<h3>'.$sec['idcita'].'</h3>
+<h3>Citas se han generado<h3>
+</div>
+<div class="icon">
+<i class="ion-medkit"></i>
+</div>
+<a href="#" class="small-box-footer">Más información  <i class="fa fa-arrow-circle-right"></i></a>
+</div>
+<br>
+';	
+require "cone.php";
+$consulta = "SELECT COUNT(*) idreceta FROM recetas";
+$citas = $mysqli->query($consulta);
+$sec = $citas->fetch_assoc();
+
+ echo'
+                   
+
+<div class="small-box bg-green">
+<div class="inner">
+<h3>'.$sec['idreceta'].'</h3>
+<h3>Recetas se han generado<h3>
+</div>
+<div class="icon">
+<i class="ion-medkit"></i>
+</div>
+<a href="#" class="small-box-footer">Más información  <i class="fa fa-arrow-circle-right"></i></a>
+</div>
+<br>
+';	
+                       }                 
+
+
+
+
 
 
 	}

@@ -20,6 +20,20 @@ class PacientesA{
 
 	}
 
+		public $NorepetirD;
+
+		public function NoRepetirDocumentoA(){
+
+		$columna = "documento";
+
+		$valor = $this->NorepetirD;
+
+		$resultado = PacientesC::VerPacientesC($columna, $valor);
+
+		echo json_encode($resultado);
+
+	}
+
 	public $Norepetir;
 
 	public function NoRepetirUsuarioA(){
@@ -32,16 +46,10 @@ class PacientesA{
 
 		echo json_encode($resultado);
 
-
-
 	}
 
-
-
-
-
-
 }
+
 
 if(isset($_POST["Pid"])){
 
@@ -50,6 +58,17 @@ if(isset($_POST["Pid"])){
 	$editarP -> Pid = $_POST["Pid"];
 
 	$editarP -> EPacienteA();
+
+
+}
+
+if(isset($_POST["NorepetirD"])){
+
+	$noRepetirU = new PacientesA();
+
+	$noRepetirU -> NorepetirD = $_POST["NorepetirD"];
+
+	$noRepetirU -> NoRepetirDocumentoA();
 
 
 }

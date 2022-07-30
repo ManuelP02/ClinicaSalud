@@ -59,7 +59,9 @@ class ConsultoriosC{
 		if(substr($_GET["url"], 13)){
 
 			$tablaBD = "consultorios";
+
 			$idconsultorio = substr($_GET["url"], 13);
+			
 			$resultado = ConsultoriosM::BorrarConsultorioM($tablaBD, $idconsultorio);
 
 			if($resultado == true){

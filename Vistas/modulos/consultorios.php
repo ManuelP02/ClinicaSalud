@@ -10,7 +10,13 @@ if($_SESSION["rol"] != "Administrador" && $_SESSION["rol"] != "Secretaria"){
 
 }
 ?>
+<?php
 
+$borrarC = new ConsultoriosC();
+
+$borrarC -> BorrarConsultorioC();
+
+?>
 <div class="content-wrapper">
 
 <section class="content-header">
@@ -26,7 +32,10 @@ if($_SESSION["rol"] != "Administrador" && $_SESSION["rol"] != "Secretaria"){
 				
 				<div class="col-md-6 col-xs-12">
 					<label>Ingresar nombre de consultorio (*):</label>
-					<input type="text" class="form-control" name="consultorioN" placeholder="Ingrese nuevo consultorio" required><br>
+					<input type="text" class="form-control" name="consultorioN" placeholder="Ingrese nuevo consultorio" required
+					oninvalid="this.setCustomValidity('Ingrese el nombre del consultorio')"
+    				oninput="this.setCustomValidity('')"
+					><br>
 					<center><button type="submit" style="border-radius: 5px;" class="btn btn-primary">Crear consultorio</button></center>
 				</div>
 				
@@ -52,7 +61,7 @@ if($_SESSION["rol"] != "Administrador" && $_SESSION["rol"] != "Secretaria"){
 						
 						<th>N°</th>
 						<th>Nombre</th>
-						<th>Editar / Borrar</th>
+						<th>Opciones</th>
 					</tr>
 
 				</thead>
@@ -78,8 +87,11 @@ if($_SESSION["rol"] != "Administrador" && $_SESSION["rol"] != "Secretaria"){
 								<a href="http://localhost/clinica/E-C/'.$value["idconsultorio"].'">
 									<button class="btn btn-success">  Editar</button>
 								</a>
-								<a href="http://localhost/clinica/consultorios/'.$value["idconsultorio"].'">
-									<button class="btn btn-danger"> Borrar</button>
+								</div>
+								<div class="btn-group">
+
+								<a onclick="return confirm(\'¿Seguro que desea eliminar el consultorio de '.$value["nombreconsultorio"].'?\')" href="http://localhost/clinica/consultorios/'.$value["idconsultorio"].'"">
+									<button class="btn btn-danger"> Borrar </button>
 								</a>
 							</div>
 
@@ -88,9 +100,7 @@ if($_SESSION["rol"] != "Administrador" && $_SESSION["rol"] != "Secretaria"){
 					</tr>';
 					}
 
-
 					?>
-					
 
 				</tbody>
 			</table>
@@ -103,15 +113,3 @@ if($_SESSION["rol"] != "Administrador" && $_SESSION["rol"] != "Secretaria"){
 
 
 </div>
-<!-- <script>setTimeout('document.location.reload()',10000); </script>
- -->
-<?php
-
-$borrarC = new ConsultoriosC();
-
-$borrarC -> BorrarConsultorioC();
-
-
-
-
-	?>

@@ -1,13 +1,13 @@
       <div class="content-wrapper">
       	<section class="content-header">
-		<h1>Gestor de Reportes por Consultorios</h1>
+		<h1>Gestor de Reportes de citas por Consultorios</h1>
         <!-- Main content -->
         <section class="content">
             <div class="row">
            
                   <div class="box">
                     <div class="box-body">
-                      <form method="POST" action="consPdf" target="_blank">
+                      <form method="POST" action="consCitasPdf" target="_blank">
 
                           <div class="form-group ">
                             <label>Seleccione el consultorio</label>

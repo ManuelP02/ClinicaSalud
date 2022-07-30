@@ -277,7 +277,6 @@ class SecretariasC{
 	public function BorrarSecretariaC(){
 
 		if(isset($_GET["Sid"])){
-
 			$tablaBD = "secretarias";
 
 			$id = $_GET["Sid"];
@@ -292,11 +291,16 @@ class SecretariasC{
 
 			if($resultado == true){
 
-				echo'<script>
+				echo'
 
+				<script type="text/javascript">
+  					alert("Secretaria eliminada exitosamente");
+						</script>
+				<script>
 				window.location = "secretarias";
-
 				</script>';
+
+		
 
 
 			}

@@ -2,7 +2,7 @@
   
   <div class="login-logo">
       <center><img src="Vistas/img/logo2.png" class="img-responsive" style="margin-top: 1%"></center>
-    <a href=""><b>Clinica Salud </b>CS</a>
+    <a href=""><b>SGCM </b>SG</a>
   </div>
 
   <!-- /.login-logo -->
@@ -59,7 +59,7 @@
 
   <!-- Copyright -->
  <div class="footer" style="position: fixed;  left:  0; bottom:  0; width: 100%; text-align: center;">
-        Clinica salud 2022 &copy; Todos los derechos reservados
+        SGCM 2022 &copy; Todos los derechos reservados
         <div class="container p-4 pb-0">
     <!-- Section: Social media -->
     <section class="mb-4">

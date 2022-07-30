@@ -90,7 +90,7 @@ Class AtencionesC{
 
 	 		$tablaBD = "atencion";
 
-		$datosC = array("idpaciente"=>$_POST["idpaciente"], "antecedentes"=>$_POST["antecedentesE"], "alergias"=>$_POST["alergiasE"], "persona_responsable"=>$_POST["presponsableE"], "intervenciones_quirurgicas"=>$_POST["intervencionesE"], "vacunascompletas"=>$_POST["vacunasE"], "cel"=>$_POST["celE"], "email"=>$_POST["emailE"], "estado_civil"=>$_POST["estadocivilE"], "ocupacion"=>$_POST["ocupacionE"], "fecha"=>$_POST["fechaE"]);
+		$datosC = array("idpaciente"=>$_POST["idpaciente"], "antecedentes"=>$_POST["antecedentesE"], "alergias"=>$_POST["alergiasE"], "persona_responsable"=>$_POST["presponsableE"], "intervenciones_quirurgicas"=>$_POST["intervencionesE"], "vacunascompletas"=>$_POST["vacunasE"], "cel"=>$_POST["celE"], "email"=>$_POST["emailE"], "estado_civil"=>$_POST["estadocivilE"], "ocupacion"=>$_POST["ocupacionE"], "fecha"=>$_POST["fechaE"], "actualizaciones"=>$_POST["actualizaciones"], "fechaAct"=>$_POST["fechaAct"]);
 
 	 	$resultado = AtencionesM::ActualizarAtencionM($tablaBD, $datosC);
 
@@ -147,7 +147,7 @@ public function CrearRecetaC(){
 
 			$tablaBD = "recetas";
 
-			$crear = array("id_doctor"=>$_POST["id_doctor"], "idpaciente"=>$_POST["idpaciente"], "idservicio"=>$_POST["idservicio"], "motivo"=>$_POST["consultaC"], "medicamento"=>$_POST["medicamentoC"], "dosis"=>$_POST["dosisC"], "duracion"=>$_POST["duracionC"], "pago"=>$_POST["pagoC"], "plan"=>$_POST["planC"], "fecha"=>$_POST["fechaC"]);
+			$crear = array("id_doctor"=>$_POST["id_doctor"], "idconsultorio"=>$_POST["idconsultorio"], "idpaciente"=>$_POST["idpaciente"], "idservicio"=>$_POST["idservicio"], "motivo"=>$_POST["consultaC"], "medicamento"=>$_POST["medicamentoC"], "dosis"=>$_POST["dosisC"], "duracion"=>$_POST["duracionC"], "pago"=>$_POST["pagoC"], "plan"=>$_POST["planC"], "fecha"=>$_POST["fechaC"]);
 
 			$resultado = AtencionesM::CrearRecetaM($tablaBD, $crear);
 
@@ -193,35 +193,7 @@ public function CrearRecetaC(){
 
 				}
 
-		//Borrar receta 
 
-	// 	public function BorrarRecetaC(){
-
-	// 	if(isset($_POST["idreceta"])){
-
-	// 		$tablaBD = "recetas";
-
-	// 		$idreceta = $_POST["idreceta"];
-
-	// 		$resultado = AtencionesM::BorrarRecetaM($tablaBD, $idreceta);
-
-	// 		if($resultado == true){
-	// 			echo'
-	// 			<script type="text/javascript">
- //  					alert("Receta Eliminada Exitosamente");
-	// 					</script>
-	// 			<script>
-	// 			window.location = "http://localhost/clinica/atencion";
-	// 			</script>';
-	// 			return;
-
-
-	// 		}
-
-	// 	}
-
-
-	// }
 
 
 		

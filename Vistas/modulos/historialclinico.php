@@ -43,7 +43,14 @@ if($_SESSION["rol"] != "Doctor"){
 echo'
     <div class="content-wrapper">
    <section class="content-header">
-     <center><label>Historial clínico de:  '.$resultad["nombre"].' '.$resultad["Apaterno"].' '.$resultad["Amaterno"].' <br><br> Cédula: '.$resultad["documento"].'</label></center>
+        <center><h2>Historial clínico de '.$resultad["nombre"].' '.$resultad["Apaterno"].' '.$resultad["Amaterno"].'</h2>
+<label>Cédula: '.$resultad["documento"].'</label><br>
+<label>Sexo: '.$resultad["sexo"].'</label><br>
+<label>Fecha de nacimiento: '.$resultad["fecha"].'</label><br>
+  <a href="http://localhost/clinica/atencion">
+            <button class="btn btn-danger" name="btnEnviar">Regresar <i class="fa fa-arrow-left"></i></button></a>
+           
+</center>
    </section>
 
    <section class="content">
@@ -79,10 +86,10 @@ echo'
 
             
                <br>
-               <label>Vacunas completas:</label>
+               <label>Vacunas:</label>
                <small>En caso de faltar, especificar las que falten.</small>
                <br>
-               <small>En caso de estar completas, rellenar campo con "SI"</small>
+               <small>En caso de estar completas, rellenar campo con "NO"</small>
 
                <input type="text" class="form-control" name="vacunasE" value="'.$resultado["vacunascompletas"].'" name="vacunasC">
 
@@ -112,19 +119,39 @@ echo'
                <br>
                <label>Fecha creación de historial:</label>
 
-               <input type="date" class="form-control" name="fechaE" value="'.$resultado["fecha"].'">';
+               <input type="date" class="form-control" name="fechaE" value="'.$resultado["fecha"].'">
+
+                <br>
+               <label>Actualizaciones:</label>
+               <small>Separadas por un espacio</small>';
+               $text=$resultado["actualizaciones"];
+               echo'
+               <br>
+                <textarea class="form-control" name="actualizaciones" required rows="7">';?>
+
+                <?php echo $text; ?>
+
+                </textarea>
+                <?php
+                echo'
+               <label>Ultima fecha de actualización:</label>
+                  <input type="date" class="form-control" name="fechaAct" value="'.$resultado["fechaAct"].'">
+
+                
+
+
+
+               ';
+
 
                 
         
             echo'   <br>
              </div>
 
-             <center><button class="btn btn-success" type="submit">Actualizar historial</button>
-
-            <a href="http://localhost/clinica/atencion" <button class="btn btn-warning"> Regresar</button></a>
+             <center><button class="btn btn-success" type="submit">Actualizar historial <i class="fa fa-refresh" </button> </i>
              </center>
-           </div>
-         </div> 
+            <br>
     
        </form>  ';
 
@@ -146,10 +173,15 @@ echo'
 <input type="hidden" class="form-control" name="estadocivilE" value="'.$resultado["estado_civil"].'">
 <input type="hidden" class="form-control"  name="ocupacionE" value="'.$resultado["ocupacion"].'">
 <input type="hidden" class="form-control"  name="fechaE" value="'.$resultado["fecha"].'">
+<input type="hidden" class="form-control"  name="actualizaciones" value="'.$resultado["actualizaciones"].'">
+<input type="hidden" class="form-control"  name="fechaAct" value="'.$resultado["fechaAct"].'">
+
+
     <div class="btn-group">
-             <button class="btn btn-primary" type="submit">Descargar PDF</button></a>
+             <button class="btn btn-primary" type="submit">Descargar historial en PDF <i class="fa fa-download"</button></a></i>
              </div>
        </form>
+       <br>
        ';
 
       

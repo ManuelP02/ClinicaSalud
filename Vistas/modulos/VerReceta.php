@@ -22,16 +22,19 @@ if($_SESSION["rol"] != "Paciente" && $_SESSION["rol"] != "Doctor"){
    $idpaciente = $resultado["idpaciente"];
    $resultad = PacientesC::VerPacientesNC($tablaBD, $idpaciente);
 
+
+
 echo'
 
     <div class="content-wrapper">
    <section class="content-header">
-     <h1>Receta de '.$resultad["nombre"].' '.$resultad["Apaterno"].' '.$resultad["Amaterno"].'</h1>
+   <center>
+     <h2>Su receta '.$resultad["nombre"].' '.$resultad["Apaterno"].'</h2>
+     <a href="http://localhost/clinica/Recetas/'.$resultado["idpaciente"].'" <button class="btn btn-danger"> Regresar <i class="fa fa-arrow-left"></i></button></a></center>
    </section>
 
    <section class="content">
 
-     <div class="box">
 
 
     <div class="box-body">  
@@ -65,21 +68,6 @@ echo'
               <input type="text" class="form-control" name="duracion" readonly value="'.$resultado["duracion"].'">
 
             
-               <br>';
-               $tablaBD = "servicios";
-               $columna = "idservicio";
-               $valor = $resultado["idservicio"];
-               $servicio = ServiciosM::VerServiciosTM($tablaBD, $columna, $valor);
-               echo' <label>Servicio:</label>
-
-         <input type="text" class="form-control" name="servicio" readonly value="'.$servicio["nombre"].' - Costo: '.$servicio["costo"].' DOP">
-
-          
-               <br>
-
-               <label>Pago:</label>
-
-         <input type="text" class="form-control" name="pago" readonly value="'.$resultado["pago"].' DOP">
 
           
                <br>
@@ -111,12 +99,56 @@ echo'
 
              <center>
 <button class="btn btn-success" type="submit"> Descargar Receta en PDF <i class="fa fa-download"></button></i>
-     <a href="http://localhost/clinica/Recetas/'.$resultado["idpaciente"].'" <button class="btn btn-danger"> Regresar</button></a>
     
 </center>
-           </div>
-         </div> 
+        <hr>
+         
     
-       </form>  ';
+       </form>'; 
 
-      
+echo'
+<form action="http://localhost/clinica/pdfserv" target="_blank" method="POST">
+<section class="content">
+
+     <div class="box">
+
+
+    <div class="box-body">  
+    ';
+               $tablaBD = "servicios";
+               $columna = "idservicio";
+               $valor = $resultado["idservicio"];
+               $servicio = ServiciosM::VerServiciosTM($tablaBD, $columna, $valor);
+               echo' 
+               <input type="hidden" class="form-control" name="idreceta" value="'.$resultado["idreceta"].'"></input>
+            <input type="hidden" class="form-control" name="idservicio" value="'.$servicio["idservicio"].'"></input>
+
+
+        <input type="hidden" class="form-control" name="nombrep" value="'.$resultad["nombre"].' '.$resultad["Apaterno"].' '.$resultad["Amaterno"].'">
+     <input type="hidden" class="form-control" name="documento" value="'.$resultad["documento"].'"></input>
+                    <input type="hidden" class="form-control" name="fecha" readonly value="'.$resultado["fecha"].'">
+
+               <center><h2>Descargar factura</h2>
+               <label>Servicio generado por receta:</label>
+         <input type="text" class="form-control" name="servicio" readonly value="'.$servicio["nombre"].' - Costo: '.$servicio["costo"].' DOP">
+
+         <br>
+         <label>Pago del servicio:</label>
+
+         <input type="text" class="form-control" name="pago" readonly value="'.$resultado["pago"].' DOP">
+         <br>
+         <center>
+<button class="btn btn-primary" type="submit"> Descargar Factura en PDF <i class="fa fa-download"></button></i>
+    
+</center>
+       ';
+             $tablaBD = "doctores";
+               $columna = "id";
+               $valor = $resultado["id_doctor"];
+               $doctores = DoctoresM::VerDoctoresTM($tablaBD, $columna, $valor);
+
+      echo'<input type="hidden" class="form-control" name="doctor" value="Dr. '.$doctores["nombre"].' '.$doctores["apellido"].'">
+
+      </form>
+      ';
+

@@ -124,43 +124,46 @@ require "cone.php";
 
     }
 
-
-$sql = "SELECT r.id_doctor, r.idservicio, r.idpaciente, r.fecha, r.pago, s.nombre, s.costo, d.nombre AS doctornombre, d.apellido, d.idconsultorio, c.nombreconsultorio, p.documento
+$id=$_POST['iddoctor'];
+$sql = "SELECT r.id_doctor, r.idservicio, r.idpaciente, r.fecha, r.pago, s.nombre, s.costo, d.nombre AS doctornombre, d.apellido AS doctorapellido, d.idconsultorio, c.nombreconsultorio, p.documento
     FROM recetas AS r
     INNER JOIN pacientes AS p on r.idpaciente=p.idpaciente
     INNER JOIN doctores AS d ON  r.id_doctor=d.id
     INNER JOIN servicios AS s ON r.idservicio=s.idservicio
     INNER JOIN consultorios AS c ON d.idconsultorio=c.idconsultorio
-    ";
+    WHERE r.id_doctor= $id";
     $resultado = $mysqli->query($sql);
-    $datos = $resultado->fetch_assoc();
-    if(empty($datos["nombreconsultorio"])){
+    $pdf = new text();
+        $pdf->AliasNbPages();
+    $pdf->AddPage();
+     $datos = $resultado->fetch_assoc();
+     if(empty($datos["doctornombre"])){
          $pdf = new text();
          $pdf->AddPage();
-        $pdf->SetTitle("Servicios no registrados");
+        $pdf->SetTitle("Doctor sin servicios");
          $pdf->SetFont("Arial", "B", 20);
          $pdf->Cell(290, 0, "Ups! :(", 0, 1, "C");
         $pdf->Ln(20);
-        $pdf->Cell(290, 0, "Todavía no se han generado servicios", 0, 1, "C");
+        $pdf->Cell(290, 0, "Este doctor todavía no ha generado servicios", 0, 1, "C");
+
+             $pdf->AliasNbPages();
     }
     else{
-
-            $pdf = new text();
-    $pdf->AliasNbPages();
-    $pdf->AddPage();
-
-      $pdf->SetTitle("Reporte de servicios");
+         $pdf->AliasNbPages();
+$nombredoct=$datos['doctornombre'];
+$apellido=$datos['doctorapellido'];
+      $pdf->SetTitle("Reporte de servicios de Dr. ".$nombredoct);
       $pdf->SetFont("Arial", "B", 20);
-    $pdf->Cell(290, 0, "Todos los servicios", 0, 1, "C");
+    $pdf->Cell(290, 0, 'Todos los servicios del Dr '.$nombredoct. ' ' .$apellido, 0, 1, "C");
     $pdf->Ln(5);
 
      $pdf->SetFont("Arial", "B", 12);
       $pdf->Cell(10, 5,  "#", 1, 0, "C");
-    $pdf->Cell(50, 5, "Doctor", 1, 0, "C");
-     $pdf->Cell(35, 5, "Consultorio", 1, 0, "C");
-    $pdf->Cell(85, 5, "Servicio", 1, 0, "C");
-    $pdf->Cell(15, 5, "Costo", 1, 0, "C");
-    $pdf->Cell(15, 5, "Pago", 1, 0, "C");
+    $pdf->Cell(40, 5, "Doctor", 1, 0, "C");
+     $pdf->Cell(30, 5, "Consultorio", 1, 0, "C");
+    $pdf->Cell(80, 5, "Servicio", 1, 0, "C");
+    $pdf->Cell(20, 5, "Costo", 1, 0, "C");
+    $pdf->Cell(20, 5, "Pago", 1, 0, "C");
         $pdf->Cell(37, 5, "Paciente Ced.", 1, 0, "C");
     $pdf->Cell(25, 5, "Fecha", 1, 1, "C");
     $pdf->SetFont("Arial", "", 10);
@@ -168,11 +171,11 @@ $sql = "SELECT r.id_doctor, r.idservicio, r.idpaciente, r.fecha, r.pago, s.nombr
     foreach ($resultado as $key => $value){
 
         $pdf->Cell(10, 5,  ($key+1), 1, 0, "C");
-        $pdf->Cell(50, 5, $value['doctornombre']." ".$value['apellido'] , 1, 0, "C");
-         $pdf->Cell(35, 5,  $value['nombreconsultorio'], 1, 0, "C");
-         $pdf->Cell(85, 5, $value['nombre'], 1, 0, "C");
-        $pdf->Cell(15, 5, $value['costo'], 1, 0, "C");
-          $pdf->Cell(15, 5, $value['pago'], 1, 0, "C");
+        $pdf->Cell(40, 5, $value['doctornombre']." ".$value['doctorapellido'] , 1, 0, "C");
+         $pdf->Cell(30, 5,  $value['nombreconsultorio'], 1, 0, "C");
+         $pdf->Cell(80, 5, $value['nombre'], 1, 0, "C");
+        $pdf->Cell(20, 5, $value['costo'], 1, 0, "C");
+          $pdf->Cell(20, 5, $value['pago'], 1, 0, "C");
          $pdf->Cell(37, 5, $value['documento'], 1, 0, "C");
            $pdf->Cell(25, 5, $value['fecha'], 1, 1, "C");
     

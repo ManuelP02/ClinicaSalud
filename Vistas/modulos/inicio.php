@@ -14,7 +14,7 @@
                     echo'
                      <div class="box-footer" style="text-align: right;">
 
-                      Clinica salud 2022 &copy; Todos los derechos reservados
+                      SGCM 2022 &copy; Todos los derechos reservados
                                        <br>';
                         
                         if($_SESSION["rol"] == "Administrador"){

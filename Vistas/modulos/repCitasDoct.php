@@ -1,13 +1,13 @@
       <div class="content-wrapper">
       	<section class="content-header">
-		<h1>Gestor de Reportes por Doctores</h1>
+		<h1>Gestor de Reportes de citas por Doctores</h1>
         <!-- Main content -->
         <section class="content">
             <div class="row">
            
                   <div class="box">
                     <div class="box-body">
-                      <form method="POST" action="docPdf" target="_blank">
+                      <form method="POST" action="docCitasPdf" target="_blank">
 
                           <div class="form-group ">
                             <label>Seleccione el doctor</label>

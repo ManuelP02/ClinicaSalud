@@ -40,7 +40,7 @@ class AtencionesM extends ConexionBD{
 	//Ver historial
 	static public function VerHistorialM($tablaBD, $id){
 
-		$pdo = ConexionBD::cBD()->prepare("SELECT idpaciente, antecedentes, alergias, persona_responsable, intervenciones_quirurgicas, vacunascompletas, cel, email, estado_civil, ocupacion, fecha FROM $tablaBD WHERE $id = idpaciente");
+		$pdo = ConexionBD::cBD()->prepare("SELECT idpaciente, antecedentes, alergias, persona_responsable, intervenciones_quirurgicas, vacunascompletas, cel, email, estado_civil, ocupacion, fecha, actualizaciones, fechaAct FROM $tablaBD WHERE $id = idpaciente");
 
 		$pdo -> bindParam(":idpaciente", $id, PDO::PARAM_INT);
 		$pdo ->execute();
@@ -58,7 +58,7 @@ class AtencionesM extends ConexionBD{
 
 	static public function ActualizarAtencionM($tablaBD, $datosC){
 
-		$pdo = ConexionBD::cBD()->prepare("UPDATE $tablaBD SET antecedentes = :antecedentes, alergias = :alergias, persona_responsable = :persona_responsable, intervenciones_quirurgicas = :intervenciones_quirurgicas, vacunascompletas = :vacunascompletas, cel = :cel, email = :email, estado_civil = :estado_civil, ocupacion = :ocupacion, fecha = :fecha WHERE idpaciente = :idpaciente");
+		$pdo = ConexionBD::cBD()->prepare("UPDATE $tablaBD SET antecedentes = :antecedentes, alergias = :alergias, persona_responsable = :persona_responsable, intervenciones_quirurgicas = :intervenciones_quirurgicas, vacunascompletas = :vacunascompletas, cel = :cel, email = :email, estado_civil = :estado_civil, ocupacion = :ocupacion, fecha = :fecha, actualizaciones = :actualizaciones, fechaAct = :fechaAct WHERE idpaciente = :idpaciente");
 
 		$pdo -> bindParam(":idpaciente", $datosC["idpaciente"], PDO::PARAM_INT);
 		$pdo -> bindParam(":antecedentes", $datosC["antecedentes"], PDO::PARAM_STR);
@@ -71,6 +71,10 @@ class AtencionesM extends ConexionBD{
 		$pdo -> bindParam(":estado_civil", $datosC["estado_civil"], PDO::PARAM_STR);
 		$pdo -> bindParam(":ocupacion", $datosC["ocupacion"], PDO::PARAM_STR);
 		$pdo -> bindParam(":fecha", $datosC["fecha"], PDO::PARAM_STR);
+		$pdo -> bindParam(":actualizaciones", $datosC["actualizaciones"], PDO::PARAM_STR);
+		$pdo -> bindParam(":fechaAct", $datosC["fechaAct"], PDO::PARAM_STR);
+
+
 
 		if($pdo -> execute()){
 
@@ -114,9 +118,10 @@ class AtencionesM extends ConexionBD{
 
 	static public function CrearRecetaM($tablaBD, $crear){
 
-$pdo = ConexionBD::cBD()->prepare("INSERT INTO $tablaBD(id_doctor, idpaciente, idservicio, motivo, medicamento, dosis, duracion, pago, plan, fecha) VALUES (:id_doctor, :idpaciente, :idservicio, :motivo, :medicamento, :dosis, :duracion, :pago, :plan, :fecha)");
+$pdo = ConexionBD::cBD()->prepare("INSERT INTO $tablaBD(id_doctor, idconsultorio, idpaciente, idservicio, motivo, medicamento, dosis, duracion, pago, plan, fecha) VALUES (:id_doctor, :idconsultorio,:idpaciente, :idservicio, :motivo, :medicamento, :dosis, :duracion, :pago, :plan, :fecha)");
 
 	$pdo -> bindParam(":id_doctor", $crear["id_doctor"], PDO::PARAM_INT);
+	$pdo -> bindParam(":idconsultorio", $crear["idconsultorio"], PDO::PARAM_INT);
 	$pdo -> bindParam(":idpaciente", $crear["idpaciente"], PDO::PARAM_INT);
 	$pdo -> bindParam(":idservicio", $crear["idservicio"], PDO::PARAM_INT);
 	$pdo -> bindParam(":motivo", $crear["motivo"], PDO::PARAM_STR);

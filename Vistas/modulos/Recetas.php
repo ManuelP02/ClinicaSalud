@@ -23,7 +23,7 @@ echo'<center><h2>Recetas de '.$resultado["nombre"].' '.$resultado["Apaterno"].' 
 <label>Sexo: '.$resultado["sexo"].'</label><br>
 <label>Fecha de nacimiento: '.$resultado["fecha"].'</label><br>
   <a href="http://localhost/clinica/atencion">
-            <button class="btn btn-danger" name="btnEnviar">Regresar</button></a>
+            <button class="btn btn-danger" name="btnEnviar">Regresar <i class="fa fa-arrow-left"></i></button></a>
            
 </center>
 
@@ -34,7 +34,13 @@ echo'<center><h2>Recetas de '.$resultado["nombre"].' '.$resultado["Apaterno"].' 
 
 <?php
   if($_SESSION["rol"] == "Paciente"){
-    echo'<h1>Sus Recetas '.$_SESSION["nombre"].' '.$_SESSION["Apaterno"].' '.$_SESSION["Amaterno"].'</h1>';
+    echo'
+    <center>
+    <h2>Sus Recetas '.$_SESSION["nombre"].' '.$_SESSION["Apaterno"].' '.$_SESSION["Amaterno"].'</h2>
+    <a href="http://localhost/clinica/atencion">
+            <button class="btn btn-danger" name="btnEnviar">Regresar <i class="fa fa-arrow-left"></i></button></a>
+
+    </center>';
   }
 
 

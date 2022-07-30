@@ -124,34 +124,35 @@ require "cone.php";
 
     }
 
-
+$id=$_POST['idconsultorio'];
 $sql = "SELECT r.id_doctor, r.idservicio, r.idpaciente, r.fecha, r.pago, s.nombre, s.costo, d.nombre AS doctornombre, d.apellido, d.idconsultorio, c.nombreconsultorio, p.documento
     FROM recetas AS r
     INNER JOIN pacientes AS p on r.idpaciente=p.idpaciente
     INNER JOIN doctores AS d ON  r.id_doctor=d.id
     INNER JOIN servicios AS s ON r.idservicio=s.idservicio
     INNER JOIN consultorios AS c ON d.idconsultorio=c.idconsultorio
-    ";
+    WHERE d.idconsultorio= $id";
     $resultado = $mysqli->query($sql);
-    $datos = $resultado->fetch_assoc();
-    if(empty($datos["nombreconsultorio"])){
+    $pdf = new text();
+    $pdf->AliasNbPages();
+    $pdf->AddPage();
+     $datos = $resultado->fetch_assoc(); 
+        if(empty($datos["nombreconsultorio"])){
          $pdf = new text();
          $pdf->AddPage();
-        $pdf->SetTitle("Servicios no registrados");
+        $pdf->SetTitle("Consultorio sin servicios");
          $pdf->SetFont("Arial", "B", 20);
          $pdf->Cell(290, 0, "Ups! :(", 0, 1, "C");
         $pdf->Ln(20);
-        $pdf->Cell(290, 0, "Todavía no se han generado servicios", 0, 1, "C");
+        $pdf->Cell(290, 0, "Este consultorio todavía no ha generado servicios", 0, 1, "C");
+
+             $pdf->AliasNbPages();
     }
     else{
-
-            $pdf = new text();
-    $pdf->AliasNbPages();
-    $pdf->AddPage();
-
-      $pdf->SetTitle("Reporte de servicios");
+        $pdf->AliasNbPages();
+        $pdf->SetTitle("Reporte de servicios de " .$datos['nombreconsultorio']);
       $pdf->SetFont("Arial", "B", 20);
-    $pdf->Cell(290, 0, "Todos los servicios", 0, 1, "C");
+    $pdf->Cell(290, 0, "Todos los servicios de ".$datos['nombreconsultorio'], 0, 1, "C");
     $pdf->Ln(5);
 
      $pdf->SetFont("Arial", "B", 12);
@@ -180,7 +181,7 @@ $sql = "SELECT r.id_doctor, r.idservicio, r.idpaciente, r.fecha, r.pago, s.nombr
     }
 
     }
-
+      
 
 $pdf->Output();
 ob_end_flush();

@@ -10,7 +10,7 @@ session_start();
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>CLINICA SALUD</title>
+  <title>Software de Gestión de Consultorio Médico</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
@@ -72,18 +72,18 @@ session_start();
     include "modulos/menuSecretaria.php";
       include "modulos/cabecera.php";
 
-    }else if($_SESSION["rol"] == "Paciente" && $_GET["url"] != "pdfhist" && $_GET["url"] != "pdfrec"){
+    }else if($_SESSION["rol"] == "Paciente" && $_GET["url"] != "pdfhist" && $_GET["url"] != "pdfrec" && $_GET["url"] != "pdfserv"){
 
       include "modulos/menuPaciente.php";
       include "modulos/cabeceraPaciente.php";
     
 
-    }else if($_SESSION["rol"] == "Doctor" && $_GET["url"] != "pdfhist" && $_GET["url"] != "pdfrec"){
+    }else if($_SESSION["rol"] == "Doctor" && $_GET["url"] != "pdfhist" && $_GET["url"] != "pdfrec" && $_GET["url"] != "pdfserv"){
 
       include "modulos/menuDoctor.php";
       include "modulos/cabecera.php";
 
-    }else if($_SESSION["rol"] == "Administrador" && $_GET["url"] != "pdfCons"){
+    }else if($_SESSION["rol"] == "Administrador" && $_GET["url"] != "pdfCons" && $_GET["url"] != "docPdf" && $_GET["url"] != "consPdf" && $_GET["url"] != "consCitasPdf" && $_GET["url"] != "docCitasPdf" && $_GET["url"] != "pdfCitas" && $_GET["url"] != "pdfRecCons"){
 
       include "modulos/menuAdministrador.php";
       include "modulos/cabecera.php";
@@ -98,7 +98,7 @@ session_start();
 
       $url = explode("/", $_GET["url"]);
 
-      if($url[0] == "inicio" || $url[0] == "salir" || $url[0] == "perfil-Secretaria" || $url[0] == "perfil-S"   || $url[0] == "consultorios"  || $url[0] == "E-C" || $url[0] == "E-S" || $url[0] == "servicios" || $url[0] == "doctores" || $url[0] == "pacientes" || $url[0] == "atencion" || $url[0] == "perfil-Paciente" || $url[0] == "perfil-P" || $url[0] == "Ver-consultorios" || $url[0] == "Doctor" || $url[0] == "historial" || $url[0] == "CrearAtencion" || $url[0] == "historialclinico" || $url[0] == "CrearReceta" || $url[0] == "perfil-Doctor" || $url[0] == "perfil-D" || $url[0] == "Citas"|| $url[0] == "perfil-Administrador" || $url[0] == "perfil-A" || $url[0] == "pdfhist" || $url[0] == "secretarias" || $url[0] == "inicio-editar" || $url[0] == "historialpacient" || $url[0] == "Recetas" || $url[0] == "VerReceta" || $url[0] == "pdfrec" || $url[0] == "GestRecet" || $url[0] == "borrarCita.php" || $url[0] == "repCons" || $url[0] == "pdfCons" || $url[0] == "repDoct"){
+      if($url[0] == "inicio" || $url[0] == "salir" || $url[0] == "perfil-Secretaria" || $url[0] == "perfil-S"   || $url[0] == "consultorios"  || $url[0] == "E-C" || $url[0] == "E-S" || $url[0] == "servicios" || $url[0] == "doctores" || $url[0] == "pacientes" || $url[0] == "atencion" || $url[0] == "perfil-Paciente" || $url[0] == "perfil-P" || $url[0] == "Ver-consultorios" || $url[0] == "Doctor" || $url[0] == "historial" || $url[0] == "CrearAtencion" || $url[0] == "historialclinico" || $url[0] == "CrearReceta" || $url[0] == "perfil-Doctor" || $url[0] == "perfil-D" || $url[0] == "Citas"|| $url[0] == "perfil-Administrador" || $url[0] == "perfil-A" || $url[0] == "pdfhist" || $url[0] == "secretarias" || $url[0] == "inicio-editar" || $url[0] == "historialpacient" || $url[0] == "Recetas" || $url[0] == "VerReceta" || $url[0] == "pdfrec" || $url[0] == "GestRecet" || $url[0] == "borrarCita.php" || $url[0] == "repCons" || $url[0] == "pdfCons" || $url[0] == "repDoct" || $url[0] == "docPdf" || $url[0] == "pdfserv"  || $url[0] == "consPdf" || $url[0] == "historialdoctor" || $url[0] == "repCitasCons" || $url[0] == "repCitasDoct" || $url[0] == "consCitasPdf" || $url[0] == "docCitasPdf" || $url[0] == "pdfCitas"  || $url[0] == "pdfRecCons"){
 
         include "modulos/".$url[0].".php";
 
@@ -196,7 +196,7 @@ session_start();
     $('#calendar').fullCalendar({
 
       hiddenDays: [0,6],
-      defaultView: 'agendaWeek',
+      defaultView: 'agendaDay', /////agendaWeek,agendaDay
        selectable: true,
          validRange: {
       start: new Date(),

@@ -19,15 +19,19 @@ if($_SESSION["rol"] != "Doctor"){
             echo'
 <div class="content-wrapper">
   <section class="content-header">
+
+    <center><h2>Crear receta para '.$resultad["nombre"].' '.$resultad["Apaterno"].' '.$resultad["Amaterno"].'</h2>
+<label>Cédula: '.$resultad["documento"].'</label><br>
+<label>Sexo: '.$resultad["sexo"].'</label><br>
+<label>Fecha de nacimiento: '.$resultad["fecha"].'</label><br>
+  <a href="http://localhost/clinica/atencion">
+            <button class="btn btn-danger" name="btnEnviar">Regresar <i class="fa fa-arrow-left"></i></button></a>
+           
+</center>
+
+
   </section>
-
-
-  <section class="content">
-
-    <div class="box">
- <center>
-  <label>Crear receta para: '.$resultad["nombre"].' '.$resultad["Apaterno"].' '.$resultad["Amaterno"].' <br>Cédula: '.$resultad["documento"].' </label></center>
-
+    <section class="content">
       <form method="post">
 
        <div class="panel panel-primary">
@@ -35,6 +39,7 @@ if($_SESSION["rol"] != "Doctor"){
               
               <input type="hidden" name="idpaciente" value="'.$id.'">
                <input type="hidden" name="id_doctor" value="'.$_SESSION["id"].'">
+               <input type="hidden" name="idconsultorio" value="'.$_SESSION["idconsultorio"].'">
                 '
                     
               ?>
@@ -43,29 +48,29 @@ if($_SESSION["rol"] != "Doctor"){
            
 
               <br>
-              <label>Motivo de la consulta:</label>
+              <label>Motivo de la consulta (*):</label>
 
-        <textarea class="form-control" name="consultaC" required rows="4"></textarea>
+        <textarea class="form-control" name="consultaC" rows="4"></textarea>
         <br>
 
 
-             <label>Medicamento</label>
+             <label>Medicamento (*):</label>
     
-             <input type="text" class="form-control" name="medicamentoC" required>
+             <input type="text" class="form-control" name="medicamentoC">
 
               <br>
               
-              <label>Dósis:</label>
+              <label>Dósis (*):</label>
 
-        <input type="text" class="form-control" name="dosisC" required>
+        <input type="text" class="form-control" name="dosisC">
 
               <br>
-              <label>Duración</label>
-              <textarea class="form-control" name="duracionC" required rows="3"></textarea>
+              <label>Duración (*):</label>
+              <textarea class="form-control" name="duracionC" rows="3"></textarea>
 
             
               <br>
-              <label>Servicio:</label>
+              <label>Servicio (*):</label>
 
               <select class="form-control selectpicker" name="idservicio" required>
                                 <?php 
@@ -81,23 +86,25 @@ if($_SESSION["rol"] != "Doctor"){
                 }?>
             </select>
               <br>
-              <label>Pago:</label>
+              <label>Pago (*):</label>
 
-              <input type="number" class="form-control"  name="pagoC" required>
+              <input type="number" class="form-control"  name="pagoC" required oninvalid="this.setCustomValidity('Ingrese el pago realizado por el paciente')"
+    oninput="this.setCustomValidity('')"> 
             
               <br>
-              <label>Plan:</label>
+              <label>Plan (*):</label>
 
-              <input type="text" class="form-control"  name="planC" required>
+              <input type="text" class="form-control"  name="planC">
 <br>
-              <label>Fecha:</label>
+              <label>Fecha (*):</label>
 
-              <input type="date" class="form-control"  name="fechaC" required>
+              <input type="date" class="form-control"  name="fechaC" required oninvalid="this.setCustomValidity('Ingrese la fecha de creación del servicio')"
+    oninput="this.setCustomValidity('')">
 
               <br>
               <center>
               <button class="btn btn-success" type="submit">Crear Receta</button>
-              <a href="http://localhost/clinica/atencion" button class="btn btn-danger"> Regresar</button></a></center>
+             
             </div>
           </div>
 

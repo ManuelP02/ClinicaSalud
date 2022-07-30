@@ -128,7 +128,7 @@ class SecretariasM extends ConexionBD{
 		$pdo -> bindParam(":id", $id, PDO::PARAM_INT);
 
 		if($pdo -> execute()){
-
+		
 			return true;
 
 		}else{

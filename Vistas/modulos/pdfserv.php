@@ -2,8 +2,8 @@
 ob_end_clean();
 while (ob_get_level())
 header("Content-Encoding: None", true);
-require "plantpdf.php";
-
+require "plantpdf.php";	
+	
 	class text extends PDF
 	{
 		function __construct()
@@ -120,32 +120,22 @@ require "plantpdf.php";
 		}
 
 	}
-
-$antecedentes = $_POST["antecedentesE"];
-$alergias = $_POST["alergiasE"];
-$presponsable = $_POST["presponsableE"];
-$intervenciones = $_POST["intervencionesE"];
-$vacunas = $_POST["vacunasE"];
-$cel = $_POST["celE"];
-$email = $_POST["emailE"];
-$estadocivil = $_POST["estadocivilE"];
-$ocupacion = $_POST["ocupacionE"];
-$fecha = $_POST["fechaE"];
+$servicio = $_POST["servicio"];
+$idservicio = $_POST["idservicio"];
+$pago = $_POST["pago"];
+$fecha = $_POST["fecha"];
 $nombrep = $_POST["nombrep"];
 $documento = $_POST["documento"];
-$actualizaciones = $_POST["actualizaciones"];
-$fechaAct = $_POST["fechaAct"];
-
-$titulo = " Historial PDF " .$nombrep;
+$doctor = $_POST["doctor"];
+$titulo = " Factura PDF";
 $pdf = new text();
-  $pdf->AliasNbPages();
 $pdf->AddPage('portrait', 'A4');
 $pdf->SetFont('helvetica','B',17);
 $pdf->SetTitle($titulo);
 $pdf->Ln();
 $pdf->Ln();
 $pdf->Ln();
-$pdf->MultiCell(190, 5, "HISTORIAL CLÍNICO", 10, 'C');
+$pdf->MultiCell(190, 5, "FACTURA", 10, 'C');
 $pdf->SetFont('Arial','B',10);
 $pdf->Cell(17,5, "Paciente:", 0,0);
 $pdf->SetFont('Arial','I',10);
@@ -157,60 +147,30 @@ $pdf->SetFont('Arial','I',10);
 $pdf->Cell(10,5, $documento, 0,0);
 $pdf->Ln();
 $pdf->SetFont('Arial','B',10);
-$pdf->Cell(33,5, "Fecha de creación:", 0,0);
+$pdf->Cell(12,5, "Fecha:", 0,0);
 $pdf->SetFont('Arial','I',10);
 $pdf->Cell(0,5, $fecha, 0,0);
 $pdf->Ln();
+$pdf->SetFont('Arial','B',10);
+$pdf->Cell(38,5, "Factura generada por:", 0,0);
+$pdf->SetFont('Arial','I',10);
+$pdf->Cell(5,5, $doctor, 0,0);
+$pdf->Ln();
+$pdf->SetFont('Arial','B',10);
+$pdf->Cell(20,5, "Id-Servicio:", 0,0);
+$pdf->SetFont('Arial','I',10);
+$pdf->Cell(10,5, $idservicio, 0,0);
+$pdf->Ln();
 $pdf->SetFont('Arial','B',11);
-$pdf->Cell(190,10, "Antecedentes:", 1,0);
+$pdf->Cell(190,10, "Servicio:", 1,0);
 $pdf->Ln();
 $pdf->SetFont('Arial','I',10);
-$pdf->MultiCell(190, 8, $antecedentes, 1, 'L');
+$pdf->MultiCell(190, 8, $servicio, 1, 'L');
 $pdf->SetFont('Arial','B',11);
-$pdf->Cell(55,10, "Alergias:", 1,0);
+$pdf->Cell(55,10, "Pago:", 1,0);
 $pdf->SetFont('Arial','I',10); 
-$pdf->Cell(135, 10, $alergias, 1,0);
+$pdf->Cell(135, 10, $pago, 1,0);
 $pdf->Ln();
-$pdf->SetFont('Arial','B',11);
-$pdf->Cell(55,10, "Persona responsable:", 1,0); 
-$pdf->SetFont('Arial','I',10);
-$pdf->Cell(135, 10, $presponsable, 1,0);
-$pdf->Ln();
-$pdf->SetFont('Arial','B',11);
-$pdf->Cell(55,10, "Vacunas faltantes:", 1,0); 
-$pdf->SetFont('Arial','I',10);
-$pdf->Cell(135, 10, $vacunas, 1,0);	
-$pdf->Ln();
-$pdf->SetFont('Arial','B',11);
-$pdf->Cell(55,10, "Celular:", 1,0);
-$pdf->SetFont('Arial','I',10); 
-$pdf->Cell(135, 10, $cel, 1,0);	
-$pdf->Ln();
-$pdf->SetFont('Arial','B',11);
-$pdf->Cell(55,10, "Correo electrónico:", 1,0); 
-$pdf->SetFont('Arial','I',10);
-$pdf->Cell(135, 10, $email, 1,0);	
-$pdf->Ln();
-$pdf->SetFont('Arial','B',11);
-$pdf->Cell(55,10, "Estado civil:", 1,0); 
-$pdf->SetFont('Arial','I',10);
-$pdf->Cell(135, 10, $estadocivil, 1,0);
-$pdf->Ln();
-$pdf->SetFont('Arial','B',11);
-$pdf->Cell(55,10, "Ocupación:", 1,0); 
-$pdf->SetFont('Arial','I',10);
-$pdf->Cell(135, 10, $ocupacion, 1,0);
-$pdf->Ln();
-$pdf->SetFont('Arial','B',11);
-$pdf->Cell(190,10, "Actualizaciones:", 1,0);
-$pdf->Ln();
-$pdf->SetFont('Arial','I',10);
-$pdf->MultiCell(190, 8, $actualizaciones, 1, 'L');
-$pdf->SetFont('Arial','B',11);
-$pdf->Cell(55,10, "Fecha de actualización:", 1,0); 
-$pdf->SetFont('Arial','I',10);
-$pdf->Cell(135, 10, $fechaAct, 1,0);
-// $pdf->Image('Vistas/modulos/clinicasalud.png',55,190,95);
 $pdf->Output();
 ob_end_flush();
 ?>

@@ -2,9 +2,8 @@
 ob_end_clean();
 while (ob_get_level())
 header("Content-Encoding: None", true);
-require_once "fpdf.php";
-	
-	class text extends FPDF
+require "plantpdf.php";	
+	class text extends PDF
 	{
 		function __construct()
 		{
@@ -124,8 +123,6 @@ $motivo = $_POST["motivo"];
 $medicamento = $_POST["medicamento"];
 $dosis = $_POST["dosis"];
 $duracion = $_POST["duracion"];
-$servicio = $_POST["servicio"];
-$pago = $_POST["pago"];
 $plan = $_POST["plan"];
 $fecha = $_POST["fecha"];
 $doctor = $_POST["doctor"];
@@ -136,11 +133,10 @@ $pdf = new text();
 $pdf->AddPage('portrait', 'A4');
 $pdf->SetFont('helvetica','B',17);
 $pdf->SetTitle($titulo);
-$pdf->Image('Vistas/modulos/logo.png',10,10,60);
 $pdf->Ln();
 $pdf->Ln();
 $pdf->Ln();
-$pdf->MultiCell(190, 30, "RECETA MÉDICA", 10, 'C');
+$pdf->MultiCell(190, 5, "RECETA MÉDICA", 10, 'C');
 $pdf->SetFont('Arial','B',10);
 $pdf->Cell(17,5, "Paciente:", 0,0);
 $pdf->SetFont('Arial','I',10);
@@ -152,7 +148,7 @@ $pdf->SetFont('Arial','I',10);
 $pdf->Cell(10,5, $documento, 0,0);
 $pdf->Ln();
 $pdf->SetFont('Arial','B',10);
-$pdf->Cell(35,5, "Fecha de creación:", 0,0);
+$pdf->Cell(33,5, "Fecha de creación:", 0,0);
 $pdf->SetFont('Arial','I',10);
 $pdf->Cell(0,5, $fecha, 0,0);
 $pdf->Ln();
@@ -168,10 +164,10 @@ $pdf->Ln();
 $pdf->SetFont('Arial','I',10);
 $pdf->MultiCell(190, 8, $motivo, 1, 'L');
 $pdf->SetFont('Arial','B',11);
-$pdf->Cell(55,10, "Medicamentos:", 1,0);
-$pdf->SetFont('Arial','I',10); 
-$pdf->Cell(135, 10, $medicamento, 1,0);
+$pdf->Cell(190,10, "Medicamentos:", 1,0);
 $pdf->Ln();
+$pdf->SetFont('Arial','I',10); 
+$pdf->MultiCell(190, 10, $medicamento, 1, 'L');
 $pdf->SetFont('Arial','B',11);
 $pdf->Cell(55,10, "Dósis:", 1,0); 
 $pdf->SetFont('Arial','I',10);
@@ -183,22 +179,10 @@ $pdf->SetFont('Arial','I',10);
 $pdf->Cell(135, 10, $duracion, 1,0);	
 $pdf->Ln();
 $pdf->SetFont('Arial','B',11);
-$pdf->Cell(55,10, "Servicio:", 1,0);
-$pdf->SetFont('Arial','I',10); 
-$pdf->Cell(135, 10, $servicio, 1,0);	
-$pdf->Ln();
-$pdf->SetFont('Arial','B',11);
-$pdf->Cell(55,10, "Pago:", 1,0); 
-$pdf->SetFont('Arial','I',10);
-$pdf->Cell(135, 10, $pago, 1,0);	
-$pdf->Ln();
-$pdf->SetFont('Arial','B',11);
 $pdf->Cell(55,10, "Plan:", 1,0); 
 $pdf->SetFont('Arial','I',10);
 $pdf->Cell(135, 10, $plan, 1,0);
 $pdf->Ln();
-$pdf->Image('Vistas/modulos/firma.png',55,150,95);
-// $pdf->Image('Vistas/modulos/clinicasalud.png',55,190,95);
 $pdf->Output();
 ob_end_flush();
 ?>

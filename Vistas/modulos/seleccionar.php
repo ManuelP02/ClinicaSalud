@@ -1,7 +1,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#"><strong>Clínica Salud</strong></a>
+      <a class="navbar-brand" href="#"><strong>SGCM</strong></a>
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">Inicio</a></li>
@@ -102,7 +102,7 @@
 
   <!-- Copyright -->
  <div class="footer" style="position: fixed;  left:  0; bottom:  0; width: 100%; text-align: center;">
-        Clinica salud 2022 &copy; Todos los derechos reservados
+        SGCM 2022 &copy; Todos los derechos reservados
         <div class="container p-4 pb-0">
     <!-- Section: Social media -->
     <section class="mb-4">

@@ -80,11 +80,15 @@ class PacientesC{
 
 			if($resultado == true){
 
-				echo '<script>
+				echo'
 
+				<script type="text/javascript">
+  					alert("Paciente eliminado exitosamente");
+						</script>
+				<script>
 				window.location = "pacientes";
-
 				</script>';
+
 
 
 			}

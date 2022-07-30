@@ -14,8 +14,12 @@ if($_SESSION["rol"] != "Doctor"){
 <div class="content-wrapper">
 
 <section class="content-header">
-    
-     <h1>Pacientes - Historial clínico & recetas</h1>
+    <center>
+     <h2>Pacientes - Historial clínico & recetas</h2>
+         <a href="http://localhost/clinica/inicio">
+            <button class="btn btn-danger" name="btnEnviar">Regresar <i class="fa fa-arrow-left"></i></button></a>
+
+    </center>
 </section> 
 <section class="content">
   
@@ -77,7 +81,7 @@ if($_SESSION["rol"] != "Doctor"){
               <button class="btn btn-success name="btnEnviar">Crear Receta</button></a>
 
                  <a href="http://localhost/clinica/Recetas/'.$value["idpaciente"].'">
-            <button title="Ver recetas de '.$value["nombre"].'" class="btn btn-warning">Ver Recetas</button></a>
+            <button title="Ver recetas de '.$value["nombre"].'" class="btn btn-info">Ver Recetas</button></a>
             </div>
 
               </td>

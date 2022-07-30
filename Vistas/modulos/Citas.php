@@ -27,11 +27,14 @@ if($_SESSION["id"] != substr($_GET["url"], 6)){
 
 	if($resultado["sexo"] == "Femenino"){
 
-		echo'<h1>Doctora: '.$resultado["apellido"].' '.$resultado["nombre"].'</h1>';
+		echo'<center><h2>Doctora: '.$resultado["apellido"].' '.$resultado["nombre"].'</h2>
+
+    </center>';
 
 	}else{
 
-		echo'<h1>Doctor: '.$resultado["apellido"].' '.$resultado["nombre"].'</h1>';
+		echo'<center><h2>Doctor: '.$resultado["apellido"].' '.$resultado["nombre"].'</h2>   
+    </center>';
 
 	}
 
@@ -40,8 +43,12 @@ if($_SESSION["id"] != substr($_GET["url"], 6)){
 
 	$consultorio = ConsultoriosC::VerConsultoriosC ($columna, $valor);
 
-	echo'	<br>
-		<h1>Consultorio de: '.$consultorio["nombreconsultorio"].'</h1>';
+	echo'
+		<h2><center>Consultorio de: '.$consultorio["nombreconsultorio"].'</h2></center>
+		<center>
+		<a href="http://localhost/clinica/inicio">
+		<button class="btn btn-danger" name="btnEnviar">Regresar <i class="fa fa-arrow-left"></i></button></a>
+		</center>';
 
 
 

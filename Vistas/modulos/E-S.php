@@ -22,7 +22,7 @@ if($_SESSION["rol"] != "Secretaria" && $_SESSION["rol"] != "Administrador"){
 
 
 
-		echo'<h1>Editar Servicio '.$resultado["nombre"].'</h1>';
+		echo'<h1>Editar Servicio: '.$resultado["nombre"].'</h1>';
 
 ?>
 	</section>

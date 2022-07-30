@@ -33,7 +33,7 @@ if($_SESSION["rol"] != "Secretaria" && $_SESSION["rol"] != "Doctor" && $_SESSION
 						
 					<tr>
 						
-						<th>Opciones</th>
+				
 						<th>Apellido Paterno</th>
 						<th>Apellido Materno</th>
 						<th>Nombre</th>
@@ -43,6 +43,7 @@ if($_SESSION["rol"] != "Secretaria" && $_SESSION["rol"] != "Doctor" && $_SESSION
 						<th>Numero documento</th>
 						<th>Usuario</th>
 						<th>Contraseña</th>
+						<th>Opciones</th>
 					</tr>
 
 				</thead>
@@ -64,14 +65,7 @@ if($_SESSION["rol"] != "Secretaria" && $_SESSION["rol"] != "Doctor" && $_SESSION
 
 							<tr>
 						
-<td>
-							<div class="btn-group">
-				<button class="btn btn-success EditarPaciente" data-toggle="modal" Pid="'.$value["idpaciente"].'" data-target="#EditarPaciente">Editar</button></div>
-					<div class="btn-group">
-					<button class="btn btn-danger  EliminarPaciente" Pid="'.$value["idpaciente"].'" imgP="'.$value["foto"].'">Borrar</button></i>
-							</div>
 
-						</td>
 
 							<td>'.$value["Apaterno"].'</td>
 
@@ -98,7 +92,14 @@ if($_SESSION["rol"] != "Secretaria" && $_SESSION["rol"] != "Doctor" && $_SESSION
 						<td>'.$value["clave"].'</td>
 
 
+						<td>
+							<div class="btn-group">
+				<button class="btn btn-success EditarPaciente" data-toggle="modal" Pid="'.$value["idpaciente"].'" data-target="#EditarPaciente">Editar</button></div>
+					<div class="btn-group">
+					<button id="datos" data-toggle="modal" data-target="#EliminarPaciente" class="btn btn-danger"  Pid="'.$value["idpaciente"].'" imgP="'.$value["foto"].'">Borrar</button></i>
+							</div>
 
+						</td>
 
 
 
@@ -188,7 +189,7 @@ if($_SESSION["rol"] != "Secretaria" && $_SESSION["rol"] != "Doctor" && $_SESSION
 							<h2>Documento:</h2>
 							<small>Cédula o pasaporte</small>
 
-							<input type="text" class="form-control input-lg" name="documento" id="documento" required>
+							<input type="text" style="text-transform:uppercase"  class="form-control input-lg" name="documento" id="documento" minlength="9"  required>
 
 						</div>
 
