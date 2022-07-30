@@ -51,10 +51,10 @@ const modal = `<div id="EliminarDoctor" class="modal fade" tabindex="-1" role="d
         <center><h4 class="modal-title">Estás a punto de eliminar un doctor</h4></center>
       </div>
       <div class="modal-body">
-        <center><label>¿Desea eliminar doctor?</label></center>
+        <center><label style="font-size: 25px">¿Desea eliminar doctor?</label></center>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger EliminarDoctor">Eliminar</button>
+        <button type="button" class="btn btn-danger EliminarDoctor"><strong>Eliminar</strong></button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal"">Cancelar</button>
       </div>
     </div>

@@ -16,10 +16,10 @@ const modal = `<div id="EliminarSecretaria" class="modal fade" tabindex="-1" rol
         <center><h4 class="modal-title">Estás a punto de eliminar una secretaria</h4></center>
       </div>
       <div class="modal-body">
-        <center><label>¿Desea eliminar secretaria?</label></center>
+        <center><label style="font-size: 25px">¿Desea eliminar secretaria?</label></center>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger EliminarSecretaria">Eliminar</button>
+        <button type="button" class="btn btn-danger EliminarSecretaria"><strong>Eliminar</strong></button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal"">Cancelar</button>
       </div>
     </div>
