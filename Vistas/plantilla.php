@@ -180,8 +180,8 @@ session_start();
 <script src="http://localhost/clinica/Vistas/js/doctores.js"></script>
 <script src="http://localhost/clinica/Vistas/js/pacientes.js"></script>
 <script src="http://localhost/clinica/Vistas/js/secretarias.js"></script>
-
-
+<script src="http://localhost/clinica/Vistas/js/consultorios.js"></script>
+<script src="http://localhost/clinica/Vistas/js/servicios.js"></script>
 <script>
 
   $(document).ready(function () {

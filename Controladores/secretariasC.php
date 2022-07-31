@@ -229,19 +229,69 @@ class SecretariasC{
 
 	}
 
-	///Mostrar Secretarias
+	//Editar Secretarias
 
-	public function VerSecretariasC(){
+	public function SecretariaC($columna, $valor){
 
 		$tablaBD = "secretarias";
 
-		$resultado = SecretariasM::VerSecretariasM($tablaBD);
+		$resultado = SecretariasM::SecretariaM($tablaBD, $columna, $valor);
+
+		return $resultado; 
+
+	}
+
+	//Actualizar secretaria
+
+	public function ActualizarSecretariaC(){
+
+		if(isset($_POST["Sid"])){
+
+			$tablaBD = "secretarias";
+
+			$datosC = array("id"=>$_POST["Sid"], "apellido"=>$_POST["apellidoE"], "nombre"=>$_POST["nombreE"], "usuario"=>$_POST["usuarioE"], "clave"=>$_POST["claveE"]);
+
+			$resultado = SecretariasM::ActualizarSecretariaM($tablaBD, $datosC);
+
+				if($resultado == true){
+
+				echo'
+
+				<script type="text/javascript">
+  					alert("Secretaria actualizada exitosamente");
+						</script>
+				<script>
+				window.location = "secretarias";
+				</script>';
+
+		
+
+
+			}
+
+
+		}
+
+
+
+	}
+
+
+	///Ver secretarias
+
+		public function VerSecC($columna, $valor){
+
+		$tablaBD = "secretarias";
+
+		$resultado = SecretariasM::VerSecM($tablaBD, $columna, $valor);
 
 		return $resultado; 
 
 
 
 	}
+
+
 
 
 	///Crear secretarias

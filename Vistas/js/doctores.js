@@ -44,7 +44,7 @@ const modal = `<div id="EliminarDoctor" class="modal fade" tabindex="-1" role="d
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <center><h3 class="modal-title">¡Cuidado!</h3></center>
+        <center><h2 style="color: red"class="modal-title"><strong>¡CUIDADO!</strong></h2></center>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

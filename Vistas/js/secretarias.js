@@ -1,3 +1,38 @@
+$(".DT").on("click", ".EditarSecretaria", function(){
+
+	var Sid = $(this).attr("Sid");
+	var datos = new FormData();
+
+	datos.append("Sid", Sid);
+	$.ajax({
+
+		url: "Ajax/secretariasA.php",
+		method: "POST",
+		data: datos,
+		dataType: "json",
+		cache: false,
+		contentType: false,
+		processData: false,
+
+		success: function(resultado){
+
+			$("#Sid").val(resultado["id"]);
+			$("#apellidoE").val(resultado["apellido"]);
+			$("#nombreE").val(resultado["nombre"]);
+			$("#usuarioE").val(resultado["usuario"]);
+			$("#claveE").val(resultado["clave"]);
+		} 
+
+
+	})
+
+})
+
+
+
+
+
+
 let Sid = '';
 let imgS = '';
 
@@ -9,7 +44,7 @@ const modal = `<div id="EliminarSecretaria" class="modal fade" tabindex="-1" rol
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <center><h3 class="modal-title">¡Cuidado!</h3></center>
+        <center><h2 style="color: red" class="modal-title"><strong>¡CUIDADO!</strong></h2></center>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -50,3 +85,7 @@ $("#EliminarSecretaria").on("click", ".EliminarSecretaria", function(e){
 window.location = "index.php?url=secretarias&Sid="+Sid+"&imgS"+imgS;
 
 })
+
+
+
+

@@ -48,7 +48,11 @@ if($_SESSION["rol"] != "Administrador"){
 
 					<?php 
 
-					$resultado = SecretariasC::VerSecretariasC();
+					$columna = null;
+
+					$valor = null;
+
+					$resultado = SecretariasC::VerSecC($columna, $valor);
 
 					foreach ($resultado as $key => $value) {
 					
@@ -80,7 +84,8 @@ if($_SESSION["rol"] != "Administrador"){
 
 						<td>
 						<div class="btn-group">
-				<button class="btn btn-success EditarSecretaria" data-toggle="modal" Sid="'.$value["id"].'" data-target="#EditarSecretaria">Editar</button></div>
+				<button class="btn btn-success EditarSecretaria" Sid="'.$value["id"].'"data-toggle="modal" data-target="#EditarSecretaria">Editar</button></div>
+
 							<div class="btn-group">
 			<button id="datos" data-toggle="modal" data-target="#EliminarSecretaria" class="btn btn-danger" Sid="'.$value["id"].'" imgS="'.$value["foto"].'">Borrar</button>
 							</div>
@@ -128,7 +133,7 @@ if($_SESSION["rol"] != "Administrador"){
 							
 							<h2>Apellido:</h2>
 
-							<input type="text" class="form-control input-lg" name="apellido" required>
+							<input type="text" class="form-control input-lg" id="apellido" name="apellido" required>
 							<input type="hidden" name="rolS" value="Secretaria"required>
 
 						</div>
@@ -137,7 +142,7 @@ if($_SESSION["rol"] != "Administrador"){
 							
 							<h2>Nombre:</h2>
 
-							<input type="text" class="form-control input-lg" name="nombre" required>
+							<input type="text" class="form-control input-lg" id="nombre" name="nombre" required>
 
 						</div>
 
@@ -146,14 +151,14 @@ if($_SESSION["rol"] != "Administrador"){
 							
 							<h2>Usuario:</h2>
 
-							<input type="text" class="form-control input-lg" name="usuario" required>
+							<input type="text" class="form-control input-lg" id="usuario" name="usuario" required>
 
 						</div>
 						<div class="form-group">
 							
 							<h2>Contraseña:</h2>
 
-							<input type="text" class="form-control input-lg" name="clave" required>
+							<input type="text" class="form-control input-lg" id="clave" name="clave" required>
 
 						</div>
 
@@ -186,6 +191,78 @@ if($_SESSION["rol"] != "Administrador"){
 
 </div>
 
+<div class="modal fade" rol="dialog" id="EditarSecretaria">
+	
+	<div class="modal-dialog">
+		
+		<div class="modal-content">
+			
+			<form method="post" role="form">
+				
+				<div class="modal-body">
+					<div class="box-body">
+						<div class="form-group">
+							
+							<h2>Apellido:</h2>
+
+							<input type="text" class="form-control input-lg" id="apellidoE" name="apellidoE" required>
+
+							<input type="hidden" id="Sid" name="Sid">
+
+						</div>
+
+						<div class="form-group">
+							
+							<h2>Nombre:</h2>
+
+							<input type="text" class="form-control input-lg" id="nombreE" name="nombreE" required>
+
+						</div>
+
+
+						<div class="form-group">
+							
+							<h2>Usuario:</h2>
+
+							<input type="text" class="form-control input-lg" id="usuarioE" name="usuarioE" required>
+
+						</div>
+
+						<div class="form-group">
+							
+							<h2>Contraseña:</h2>
+
+							<input type="text" class="form-control input-lg" id="claveE" name="claveE" required>
+
+						</div>
+
+					</div>
+
+				</div>
+
+
+				<div class="modal-footer">
+					
+					<button type="submit" class="btn btn-success">Guardar Cambios</button>
+
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+
+				</div>
+
+			<?php
+
+				$actualizar = new SecretariasC();
+				$actualizar -> ActualizarSecretariaC();
+
+				?>
+
+			</form>
+
+		</div>
+
+	</div>
+
+</div>
 
 <?php 
 $borrarD = new SecretariasC();

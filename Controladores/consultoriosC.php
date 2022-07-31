@@ -12,12 +12,18 @@ class ConsultoriosC{
 
 			$consultorio = array("nombreconsultorio"=>$_POST["consultorioN"]);
 
-			$resultado = ConsultoriosM::CrearConsultorioM($tablaBD, $consultorio);
+			$consu = $_POST['consultorioN'];
+
+			$resultado = ConsultoriosM::CrearConsultorioM($tablaBD, $consultorio, $consu);
 
 
 			if($resultado == true){
 
-				echo '<script>
+				echo '
+				<script type="text/javascript">
+  					alert("Consultorio creado exitosamente");
+						</script>
+				<script>
 
 				window.location = "http://localhost/clinica/consultorios";
 

@@ -22,38 +22,21 @@ $borrarC -> BorrarConsultorioC();
 <section class="content-header">
 		<h1>Gestor de consultorios</h1>
 </section> 
-<section class="content">
-	
-	<div class="box">
+
+<div class="box">
 		
 		<div class="box-header">
 			
-			<form method="post">
-				
-				<div class="col-md-6 col-xs-12">
-					<label>Ingresar nombre de consultorio (*):</label>
-					<input type="text" class="form-control" name="consultorioN" placeholder="Ingrese nuevo consultorio" required
-					oninvalid="this.setCustomValidity('Ingrese el nombre del consultorio')"
-    				oninput="this.setCustomValidity('')"
-					><br>
-					<center><button type="submit" style="border-radius: 5px;" class="btn btn-primary">Crear consultorio</button></center>
-				</div>
-				
-			
-			</form>
+		<center><button class="btn btn-primary btn-lg"  data-toggle="modal" data-target="#CrearConsultorio">Crear Consultorio</button>
+</center>
 
-			<?php
-
-			$crearC = new ConsultoriosC();
-			$crearC -> CrearConsultorioC();
-
-			?>
 
 		</div>
 
+
 		<div class="box-body">
 			
-			<table class="table table-bordered table-hover table-striped">
+			<table class="table table-bordered table-hover table-striped DT">
 
 				<thead>
 						
@@ -113,3 +96,34 @@ $borrarC -> BorrarConsultorioC();
 
 
 </div>
+
+<div class="modal fade" rol="dialog" id="CrearConsultorio">
+
+			<div class="modal-dialog">
+
+				<div class="modal-content">
+
+					<form method="post" role="form">
+
+						<div class="modal-body">
+
+							<div class="box-body">
+
+								<div class="form-group">
+
+									<h2>Nombre de consultorio:</h2>
+									<input type="text" class="form-control input-lg" name="consultorioN" id="consultorioN" placeholder="Ingrese nuevo consultorio" required
+					oninvalid="this.setCustomValidity('Ingrese el nombre del consultorio')"
+    				oninput="this.setCustomValidity('')"
+					><br>
+						<div class="modal-footer">
+					<button type="submit" class="btn btn-primary">Crear</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+
+				</div>
+	<?php
+
+			$crearC = new ConsultoriosC();
+			$crearC -> CrearConsultorioC();
+
+			?>

@@ -5,7 +5,7 @@ require_once "ConexionBD.php";
 class ConsultoriosM extends ConexionBD{
 
 	///Crear consultorios
-	static public function CrearConsultorioM($tablaBD, $consultorio){
+	static public function CrearConsultorioM($tablaBD, $consultorio, $consu){		
 
 		$pdo = ConexionBD::cBD()->prepare("INSERT INTO $tablaBD(nombreconsultorio) VALUES (:nombreconsultorio)");
 
@@ -19,8 +19,10 @@ class ConsultoriosM extends ConexionBD{
 
 		$pdo -> close();
 		$pdo = null;
+}
 
-	}
+		
+
 
 	///Ver consultorios 
 

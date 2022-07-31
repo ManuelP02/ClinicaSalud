@@ -20,7 +20,7 @@ if($_SESSION["rol"] != "Administrador"){
         <section class="content">
             <div class="row">
            
-                  <div class="box">
+<!--                   <div class="box">
                     <div class="box-body">
                       <form method="POST">
 
@@ -69,15 +69,9 @@ if($_SESSION["rol"] != "Administrador"){
                       
                           </div>
                            <center><button type="submit" class="btn btn-primary btn-lg">Crear servicio</button></center>
-                        </form>
-                        <?php
-
-                        $crearServ = new ServiciosC();
-                        $crearServ -> CrearServicioC();
-
-
-
-                        ?>
+                        </form> -->
+<center><button class="btn btn-primary btn-lg"  data-toggle="modal" data-target="#CrearServicio">Crear Servicio</button>
+</center>
 			
 			<table class="table table-bordered table-hover table-striped dt-responsive DT">
 
@@ -149,6 +143,71 @@ if($_SESSION["rol"] != "Administrador"){
       </section>
 
     </div>
+
+    <div class="modal fade" rol="dialog" id="CrearServicio">
+      <div class="modal-dialog">
+
+        <div class="modal-content">
+
+          <form method="post" role="form">
+
+            <div class="modal-body">
+
+              <div class="box-body">
+
+                <div class="form-group">
+                  <h2>Nombre del servicio:</h2>
+                  <input type="text" class="form-control input-lg" required name="servicioN" id="servicioN" placeholder="Nombre"
+                            oninvalid="this.setCustomValidity('Ingrese el nombre del servicio')"
+                            oninput="this.setCustomValidity('')">
+                          </div>
+
+                    <div class="form-group">
+                  <h2>Costo del servicio:</h2>
+                  <input type="number" class="form-control input-lg" required name="costoservicioN" placeholder="Costo" oninvalid="this.setCustomValidity('Ingrese el costo del servicio')"
+    oninput="this.setCustomValidity('')">
+                          </div>
+
+                  <div class="form-group">
+                  <h2>Consultorio al que pertenecerá el servicio:</h2>
+                   <select class="form-control selectpicker input-lg" name="idconsultorio">
+                     <?php 
+
+                                      $columna = null;
+                                      $valor = null;
+
+                $resultado = ConsultoriosC::VerConsultoriosC($columna, $valor);
+
+                foreach ($resultado as $key => $value) {
+                  echo'<option value="'.$value["idconsultorio"].'">'.$value["nombreconsultorio"].'</option>';
+                  
+                }
+
+                ?>
+              </select>
+            </div>
+             <br>
+                  <div class="modal-footer">
+          <button type="submit" class="btn btn-success">Crear</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+
+        </div>
+
+    </div>
+
+  </div>
+</div>
+ <?php
+
+                        $crearServ = new ServiciosC();
+                        $crearServ -> CrearServicioC();
+
+
+
+                        ?>
+</form>
+
+
 
  <?php
 
