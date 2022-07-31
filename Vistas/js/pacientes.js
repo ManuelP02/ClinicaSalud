@@ -170,7 +170,7 @@ $("#usuarioE").change(function(){
 
 			if(resultado){
 
-				$("#usuarioE").parent().after('<div class="alert alert-danger">El usuario ya existe</div>');
+				$("#usuarioE").parent().after('<div class="alert alert-danger">El nombre de usuario ya existe</div>');
 
 				$("#usuarioE").val("");
 

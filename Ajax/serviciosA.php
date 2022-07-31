@@ -5,6 +5,19 @@ require_once "../Modelos/serviciosM.php";
 
 class ServiciosA{
 
+	public $Sid;
+
+	public function EditarS(){
+		$columna = "idservicio";
+		$valor = $this->Sid;
+
+		$resultado = ServiciosC::VerServiciosC($columna, $valor);
+
+		echo json_encode($resultado);
+
+	}
+
+
 	public $Norepetir;
 
 	public function NoRepetirServicioA(){
@@ -26,6 +39,15 @@ if(isset($_POST["Norepetir"])){
 	$noRepetirS -> Norepetir = $_POST["Norepetir"];
 
 	$noRepetirS -> NoRepetirServicioA();
+
+
+ }
+
+if(isset($_POST["Sid"])){
+
+	$editarC = new ServiciosA();
+	$editarC -> Sid = $_POST["Sid"];
+	$editarC -> EditarS();
 
 
 }

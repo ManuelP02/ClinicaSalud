@@ -22,8 +22,8 @@ $borrarC -> BorrarConsultorioC();
 <section class="content-header">
 		<h1>Gestor de consultorios</h1>
 </section> 
-
-<div class="box">
+<section class="content">
+	<div class="box">
 		
 		<div class="box-header">
 			
@@ -66,13 +66,10 @@ $borrarC -> BorrarConsultorioC();
 
 						<td>
 							
-							<div class="btn-group">
-								<a href="http://localhost/clinica/E-C/'.$value["idconsultorio"].'">
-									<button class="btn btn-success">  Editar</button>
-								</a>
-								</div>
-								<div class="btn-group">
+						<div class="btn-group">
+				<button class="btn btn-success EditarConsultorio" Cid="'.$value["idconsultorio"].'" data-toggle="modal" data-target="#EditarConsultorio">Editar</button></div>
 
+								<div class="btn-group">
 								<a onclick="return confirm(\'¿Seguro que desea eliminar el consultorio de '.$value["nombreconsultorio"].'?\')" href="http://localhost/clinica/consultorios/'.$value["idconsultorio"].'"">
 									<button class="btn btn-danger"> Borrar </button>
 								</a>
@@ -93,37 +90,89 @@ $borrarC -> BorrarConsultorioC();
 	</div>
 
 </section>
+</div>
 
 
 </div>
 
 <div class="modal fade" rol="dialog" id="CrearConsultorio">
+	<div class="modal-dialog"> 
+		<div class="modal-content"> 
+
+			<form method="post" role="form">
+				
+						<div class="modal-body">
+								<div class="box-body"> 
+
+									<div class="form-group"> 
+
+										<h2>Nombre de consultorio:</h2>
+									<input type="text" class="form-control input-lg" name="consultorioN" id="consultorioN" placeholder="Ingrese nuevo consultorio" required
+					oninvalid="this.setCustomValidity('Ingrese el nombre del consultorio')"
+    				oninput="this.setCustomValidity('')"
+					><br>
+					<div class="modal-footer">
+					<button type="submit" class="btn btn-success">Crear</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+
+					</form>
+						</div>
+
+									</div>
+
+
+
+								</div>
+
+							
+						</div>
+
+		</div>
+
+
+	</div>
+
+</div>
+
+<div class="modal fade" rol="dialog" id="EditarConsultorio">
 
 			<div class="modal-dialog">
 
 				<div class="modal-content">
 
 					<form method="post" role="form">
-
+				
 						<div class="modal-body">
 
 							<div class="box-body">
 
 								<div class="form-group">
 
-									<h2>Nombre de consultorio:</h2>
-									<input type="text" class="form-control input-lg" name="consultorioN" id="consultorioN" placeholder="Ingrese nuevo consultorio" required
-					oninvalid="this.setCustomValidity('Ingrese el nombre del consultorio')"
-    				oninput="this.setCustomValidity('')"
-					><br>
+									<h2>Editar consultorio:</h2>
+					<input type="text" class="form-control input-lg" name="consultorioE" id="consultorioE">
+					<input type="hidden" id="Cid" name="Cid">
 						<div class="modal-footer">
-					<button type="submit" class="btn btn-primary">Crear</button>
+					<button type="submit" class="btn btn-success">Crear</button>
 					<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-
+					</form>
 				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
 	<?php
 
 			$crearC = new ConsultoriosC();
 			$crearC -> CrearConsultorioC();
 
 			?>
+
+				<?php
+
+						$editarC = new ConsultoriosC();
+						$editarC -> EditarConsultoriosC();
+						$editarC -> ActualizarConsultoriosC();
+
+						?>

@@ -90,25 +90,29 @@ class SecretariasM extends ConexionBD{
 
 		static public function VerSecM($tablaBD, $columna, $valor){
 
-		if($columna == null) {
+		if($columna == null){
 
-		$pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD ORDER BY apellido ASC");
-
-		$pdo -> execute();
-
-		return $pdo -> fetchAll();
-
-		}else{
-
-			$pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD WHERE $columna = :$columna ORDER BY apellido ASC");
-
-			$pdo -> bindParam(":".$columna, $valor, PDO::PARAM_STR);
+			$pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD");
 
 			$pdo -> execute();
 
 			return $pdo -> fetchAll();
 
+		}else{
+
+			$pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD WHERE $columna = :$columna ");
+
+			$pdo ->bindParam(":".$columna, $valor, PDO::PARAM_STR);
+
+			$pdo -> execute();
+
+			return $pdo -> fetch(); 
+
 		}
+
+			$pdo -> close();
+			$pdo = null;
+
 
 
 

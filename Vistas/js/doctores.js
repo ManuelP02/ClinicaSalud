@@ -90,12 +90,7 @@ window.location = "index.php?url=doctores&Did="+Did+"&imgD="+imgD;
 
 
 
-// $(".DT").on("click", ".EliminarDoctor", function(){
-// 	var Did = $(this).attr("Did");
-// 	var imgD = $(this).attr("imgD");
 
-// 	window.location = "index.php?url=doctores&Did="+Did+"&imgD="+imgD;
-// })
 
 
 $(".DT").DataTable({
@@ -122,5 +117,86 @@ $(".DT").DataTable({
 	
 
 	}
+
+})
+
+
+$("#usuario").change(function(){
+
+	$(".alert").remove();
+
+	var usuario = $(this).val();
+	var datos = new FormData();
+
+	datos.append("NorepetirDoctor", usuario);
+
+	$.ajax({
+
+		url: "Ajax/doctoresA.php",
+		method: "POST",
+		data: datos,
+		dataType: "json",
+		cache: false,
+		contentType: false, 
+		processData: false,
+
+		success: function(resultado){
+
+
+			if(resultado){
+
+				$("#usuario").parent().after('<div class="alert alert-danger">El nombre de usuario ya existe</div>');
+
+				$("#usuario").val("");
+
+
+			}
+
+
+		}
+
+
+	})
+
+
+})
+
+$("#usuarioE").change(function(){
+
+	$(".alert").remove();
+
+	var usuario = $(this).val();
+	var datos = new FormData();
+
+	datos.append("NorepetirDoctor", usuario);
+
+	$.ajax({
+
+		url: "Ajax/doctoresA.php",
+		method: "POST",
+		data: datos,
+		dataType: "json",
+		cache: false,
+		contentType: false, 
+		processData: false,
+
+		success: function(resultado){
+
+
+			if(resultado){
+
+				$("#usuarioE").parent().after('<div class="alert alert-danger">El nombre de usuario ya existe</div>');
+
+				$("#usuarioE").val("");
+
+
+			}
+
+
+		}
+
+
+	})
+
 
 })

@@ -90,24 +90,11 @@ class ConsultoriosC{
 	///Editar consultorios
 
 	public function EditarConsultoriosC(){
-
+		if(isset($_POST["Cid"])){
 		$tablaBD = "consultorios";
-		$idconsultorio = substr($_GET["url"], 4);
+		$idconsultorio = $_POST["Cid"];
 		$resultado = ConsultoriosM::EditarConsultoriosM($tablaBD, $idconsultorio);
-
-		echo '<div class="form-group">
-							
-							<h2>Nombre:</h2>
-	<input type="text" class="form-control input-lg" name="consultorioE" value="'.$resultado["nombreconsultorio"].'">
-	<input type="hidden" class="form-control input-lg" name="Cid" value="'.$resultado["idconsultorio"].'">
-
-							<br>
-
-							<button class="btn btn-primary" type="submit">Guardar Cambios</button>
-							<a href="http://localhost/clinica/consultorios">
-							<button class="btn btn-danger">Regresar</button></a>	
-						</div>';
-
+}
 
 	}
 
@@ -116,7 +103,7 @@ class ConsultoriosC{
 
 	public function ActualizarConsultoriosC(){
 
-		if(isset($_POST["consultorioE"])){
+		if(isset($_POST["Cid"])){
 
 			$tablaBD = "consultorios";
 			$datosC = array("idconsultorio"=>$_POST["Cid"], "nombreconsultorio"=>$_POST["consultorioE"]);
@@ -125,7 +112,11 @@ class ConsultoriosC{
 
 			if($resultado == true){
 
-				echo '<script>
+				echo '
+				<script type="text/javascript">
+  					alert("Consultorio actualizado exitosamente");
+						</script>
+				<script>
 
 				window.location = "http://localhost/clinica/consultorios";
 

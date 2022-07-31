@@ -28,6 +28,84 @@ $(".DT").on("click", ".EditarSecretaria", function(){
 
 })
 
+$("#usuario").change(function(){
+
+	$(".alert").remove();
+
+	var usuario = $(this).val();
+	var datos = new FormData();
+
+	datos.append("Norepetir", usuario);
+
+	$.ajax({
+
+		url: "Ajax/secretariasA.php",
+		method: "POST",
+		data: datos,
+		dataType: "json",
+		cache: false,
+		contentType: false, 
+		processData: false,
+
+		success: function(resultado){
+
+			if(resultado){
+
+				$("#usuario").parent().after('<div class="alert alert-danger">El nombre de usuario ya existe</div>');
+
+				$("#usuario").val("");
+
+
+			}
+
+
+		}
+
+
+	})
+
+
+})
+
+$("#usuarioE").change(function(){
+
+	$(".alert").remove();
+
+	var usuario = $(this).val();
+	var datos = new FormData();
+
+	datos.append("Norepetir", usuario);
+
+	$.ajax({
+
+		url: "Ajax/secretariasA.php",
+		method: "POST",
+		data: datos,
+		dataType: "json",
+		cache: false,
+		contentType: false, 
+		processData: false,
+
+		success: function(resultado){
+
+
+			if(resultado){
+
+				$("#usuarioE").parent().after('<div class="alert alert-danger">El nombre de usuario ya existe</div>');
+
+				$("#usuarioE").val("");
+
+
+			}
+
+
+		}
+
+
+	})
+
+})
+
 
 
 

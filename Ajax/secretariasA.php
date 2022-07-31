@@ -18,6 +18,23 @@ class SecretariasA{
 
 	}
 
+	public $Norepetir;
+
+	public function NoRepetirSecretarias(){
+
+		$columna = "usuario";
+
+		$valor = $this->Norepetir;
+
+		$resultado = SecretariasC::VerSecC($columna, $valor);
+
+		echo json_encode($resultado);
+
+	}
+
+
+
+
 }
 
 if(isset($_POST["Sid"])){
@@ -25,5 +42,16 @@ if(isset($_POST["Sid"])){
 	$editarS = new SecretariasA();
 	$editarS -> Sid = $_POST["Sid"];
 	$editarS -> ESecretariaA();
+
+}
+
+if(isset($_POST["Norepetir"])){
+
+	$noRepetirS = new SecretariasA();
+
+	$noRepetirS -> Norepetir = $_POST["Norepetir"];
+
+	$noRepetirS -> NoRepetirSecretarias();
+
 
 }

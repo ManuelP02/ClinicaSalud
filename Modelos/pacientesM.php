@@ -61,6 +61,7 @@ class PacientesM extends ConexionBD{
 
 
 	}
+	
 		static public function VerPacientesNM($tablaBD, $idpaciente){
 
 		$pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD WHERE idpaciente = $idpaciente");

@@ -34,6 +34,7 @@ $resultado = DoctoresM::CrearDoctorM($tablaBD, $datosC);
 	static public function VerDoctoresC($columna, $valor){
 
 		$tablaBD = "doctores";
+		
 		$resultado = DoctoresM::VerDoctoresM($tablaBD, $columna, $valor);
 
 		return $resultado;

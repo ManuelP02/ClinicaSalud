@@ -131,7 +131,7 @@ if($_SESSION["rol"] != "Secretaria" && $_SESSION["rol"] != "Administrador"){
 							
 							<h2>Apellido:</h2>
 
-							<input type="text" class="form-control input-lg" name="apellido" required>
+							<input type="text" class="form-control input-lg" name="apellido" id="apellido" required>
 							<input type="hidden" name="rolD" value="Doctor"required>
 
 						</div>
@@ -140,7 +140,7 @@ if($_SESSION["rol"] != "Secretaria" && $_SESSION["rol"] != "Administrador"){
 							
 							<h2>Nombre:</h2>
 
-							<input type="text" class="form-control input-lg" name="nombre" required>
+							<input type="text" class="form-control input-lg" name="nombre" id="nombre" required>
 
 						</div>
 
@@ -196,7 +196,7 @@ if($_SESSION["rol"] != "Secretaria" && $_SESSION["rol"] != "Administrador"){
 							
 							<h2>Contraseña:</h2>
 
-							<input type="text" class="form-control input-lg" name="clave" required>
+							<input type="text" class="form-control input-lg" id="clave" name="clave" required>
 
 						</div>
 

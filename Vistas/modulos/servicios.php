@@ -19,57 +19,10 @@ if($_SESSION["rol"] != "Administrador"){
         <!-- Main content -->
         <section class="content">
             <div class="row">
-           
-<!--                   <div class="box">
-                    <div class="box-body">
-                      <form method="POST">
-
-                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label>Nombre de servicio (*):</label>
-                            <input type="text" class="form-control" required name="servicioN" maxlength="50" placeholder="Nombre"
-                            oninvalid="this.setCustomValidity('Ingrese el nombre del servicio')"
-                            oninput="this.setCustomValidity('')"
-                            >
-                          </div>
-
-                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label>Costo (*) DOP:</label>
-                            <input type="number" class="form-control" required name="costoservicioN" placeholder="Costo" oninvalid="this.setCustomValidity('Ingrese el costo del servicio')"
-    oninput="this.setCustomValidity('')">
-                          </div>
-                          
-                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                             <label>Consultorio al que pertenercerá servicio (*):</label>
-                          <select class="form-control selectpicker" name="idconsultorio">
-                
-                                
-
-                                         <?php 
-
-                                      $columna = null;
-                                      $valor = null;
-
-                $resultado = ConsultoriosC::VerConsultoriosC($columna, $valor);
-
-                foreach ($resultado as $key => $value) {
-                  echo'<option value="'.$value["idconsultorio"].'">'.$value["nombreconsultorio"].'</option>';
-                  
-                }
-
-
-                ?>
-              </select><br>
-                        
-
-                            </div>
-                             
-                            
-                        
-
-                      
-                          </div>
-                           <center><button type="submit" class="btn btn-primary btn-lg">Crear servicio</button></center>
-                        </form> -->
+ <section class="content">
+  <div class="box">
+    
+    <div class="box-header">                       
 <center><button class="btn btn-primary btn-lg"  data-toggle="modal" data-target="#CrearServicio">Crear Servicio</button>
 </center>
 			
@@ -112,11 +65,7 @@ if($_SESSION["rol"] != "Administrador"){
 
 						<td>
 							 <div class="btn-group">
-
-                <a href="http://localhost/clinica/E-S/'.$value["idservicio"].'"">
-                  <button class="btn btn-success"> Editar </button>
-                </a>
-              </div>
+        <button class="btn btn-success EditarServicio" Sid="'.$value["idservicio"].'" data-toggle="modal" data-target="#EditarServicio">Editar</button></div>
 							<div class="btn-group">
 
 								<a  onclick="return confirm(\'¿Seguro que desea eliminar el servicio de '.$value["nombre"].' que pertenece al Consultorio de '.$consultorio["nombreconsultorio"].'?\')"href="http://localhost/clinica/servicios/'.$value["idservicio"].'"">
@@ -144,7 +93,7 @@ if($_SESSION["rol"] != "Administrador"){
 
     </div>
 
-    <div class="modal fade" rol="dialog" id="CrearServicio">
+<div class="modal fade" rol="dialog" id="CrearServicio">
       <div class="modal-dialog">
 
         <div class="modal-content">
@@ -190,22 +139,80 @@ if($_SESSION["rol"] != "Administrador"){
                   <div class="modal-footer">
           <button type="submit" class="btn btn-success">Crear</button>
           <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-
+          </form>
+        </div>
+      </div>
+    </div>
         </div>
 
     </div>
 
   </div>
 </div>
+
+<div class="modal fade" rol="dialog" id="EditarServicio">
+      <div class="modal-dialog">
+
+        <div class="modal-content">
+
+          <form method="post" role="form">
+
+            <div class="modal-body">
+
+              <div class="box-body">
+                <center><h1 class="modal-title"><strong>Editar servicio</strong></h1></center>
+                <div class="form-group">
+                  <h2>Nombre del servicio:</h2>
+                  <input type="text" class="form-control input-lg" required name="servicioE" id="servicioE" placeholder="Nombre"
+                            oninvalid="this.setCustomValidity('Ingrese el nombre del servicio')"
+                            oninput="this.setCustomValidity('')">
+                          </div>
+                          <input type="hidden" id="Sid" name="Sid">
+                    <div class="form-group">
+                  <h2>Costo del servicio: <small>(DOP)</small></h2>
+                  <input type="number" class="form-control input-lg" required name="costoservicioE" id="costoservicioE" placeholder="Costo" oninvalid="this.setCustomValidity('Ingrese el costo del servicio')"
+    oninput="this.setCustomValidity('')">
+                          </div>
+
+                  <div class="form-group">
+                  <h2>Consultorio al que pertenece el servicio:</h2>
+                   <select class="form-control selectpicker input-lg" name="idconsultorio" id="idconsultorio">
+                     <?php 
+
+                                      $columna = null;
+                                      $valor = null;
+
+                $resultado = ConsultoriosC::VerConsultoriosC($columna, $valor);
+
+                foreach ($resultado as $key => $value) {
+                  echo'<option value="'.$value["idconsultorio"].'">'.$value["nombreconsultorio"].'</option>';
+                  
+                }
+
+                ?>
+              </select>
+            </div>
+             <br>
+                  <div class="modal-footer">
+          <button type="submit" class="btn btn-success">Guardar</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+        </div>
+
+    </div>
+
+  </div>
+</div>
+
+
  <?php
 
-                        $crearServ = new ServiciosC();
-                        $crearServ -> CrearServicioC();
-
-
-
-                        ?>
-</form>
+$crearServ = new ServiciosC();
+$crearServ -> CrearServicioC();
+?>
 
 
 
@@ -217,3 +224,10 @@ if($_SESSION["rol"] != "Administrador"){
 
  ?>
  
+ <?php
+
+            $editarS = new ServiciosC();
+            $editarS -> EditarServiciosC();
+            $editarS -> ActualizarServiciosC();
+
+            ?>
