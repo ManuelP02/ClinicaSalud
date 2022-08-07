@@ -51,6 +51,7 @@
                 <li><a href="repCons"><i class="fa fa-circle-o"></i> Por consultorios</a></li>
                 <li><a href="repDoct"><i class="fa fa-circle-o"></i> Por doctores</a></li>
                 <li><a href="pdfCons" target="_blank"><i class="fa fa-circle-o"></i>Todos los servicios</a></li>
+                <li><a href="pdfServSum" target="_blank"><i class="fa fa-circle-o"></i>Sumatoria por consultorios</a></li>
               </ul>
             </li>
          
@@ -64,6 +65,7 @@
                 <li><a href="repCitasCons"><i class="fa fa-circle-o"></i> Por consultorios</a></li>
                 <li><a href="repCitasDoct"><i class="fa fa-circle-o"></i> Por doctores</a></li>
                 <li><a href="pdfCitas" target="_blank"><i class="fa fa-circle-o"></i>Todas las citas</a></li>
+                <li><a href="pdfCitasSum" target="_blank"><i class="fa fa-circle-o"></i>Sumatoria por consultorios</a></li>
               </ul>
             </li>
 

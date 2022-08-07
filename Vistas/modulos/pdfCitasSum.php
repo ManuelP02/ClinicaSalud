@@ -125,40 +125,40 @@ require "cone.php";
     }
 
 
-$sql = "SELECT COUNT(*)idreceta, r.idconsultorio, nombreconsultorio FROM recetas as r
-INNER JOIN consultorios AS c ON r.idconsultorio = c.idconsultorio
-WHERE r.idreceta IS NOT NULL GROUP BY nombreconsultorio ASC
+$sql = "SELECT COUNT(*)idcita, id_consultorio, nombreconsultorio FROM citas AS c
+INNER JOIN consultorios AS con ON c.id_consultorio = con.idconsultorio
+WHERE idcita IS NOT NULL GROUP BY nombreconsultorio ASC
 ";
     $resultado = $mysqli->query($sql);
      $datos = $resultado->fetch_assoc();
-    if(empty($datos["idconsultorio"])){
+    if(empty($datos["idcita"])){
          $pdf = new text();
          $pdf->AddPage();
-        $pdf->SetTitle("Recetas no registradas");
+        $pdf->SetTitle("Citas no registradas");
          $pdf->SetFont("Arial", "B", 20);
          $pdf->Cell(290, 0, "Ups! :(", 0, 1, "C");
         $pdf->Ln(20);
-        $pdf->Cell(290, 0, "Todavía no se han generado recetas", 0, 1, "C");
+        $pdf->Cell(290, 0, "Todavía no se han generado citas", 0, 1, "C");
     }
         else{
              $pdf = new text();
     $pdf->AliasNbPages();
     $pdf->AddPage();
-      $pdf->SetTitle("Sumatoria de recetas");
+      $pdf->SetTitle("Sumatoria de citas");
       $pdf->SetFont("Arial", "B", 20);
-    $pdf->Cell(290, 0, "Sumatoria de recetas por consultorios", 0, 1, "C");
+    $pdf->Cell(290, 0, "Sumatoria de citas por consultorios", 0, 1, "C");
     $pdf->Ln(5);
 
      $pdf->SetFont("Arial", "B", 12);
      $pdf->Cell(85, 5, "#", 1, 0, "C");
     $pdf->Cell(85, 5, "Consultorio", 1, 0, "C");
-    $pdf->Cell(100, 5, "Recetas generadas", 1, 0, "C");
+    $pdf->Cell(100, 5, "Citas generadas", 1, 0, "C");
      $pdf->SetFont("Arial", "", 11);
      $pdf->Ln(5);
      foreach ($resultado as $key => $value){
          $pdf->Cell(85, 5,  ($key+1), 1, 0, "C");
          $pdf->Cell(85, 5, $value['nombreconsultorio'], 1, 0, "C");
-         $pdf->Cell(100, 5, $value['idreceta'], 1, 0, "C");
+         $pdf->Cell(100, 5, $value['idcita'], 1, 0, "C");
 $pdf->Ln(5);
          
 }   
