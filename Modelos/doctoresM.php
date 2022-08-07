@@ -61,6 +61,35 @@ class DoctoresM extends ConexionBD{
 
 	}
 
+		static public function VerDoctoresConsultorioM($tablaBD, $columna, $valor){
+
+		if($columna != null){
+
+			$pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD WHERE $columna = :$columna");
+
+			$pdo -> bindParam(":".$columna, $valor, PDO::PARAM_STR);
+
+			$pdo->execute();
+
+			return $pdo -> fetchAll();
+
+		}else{
+
+			$pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD");
+
+			$pdo->execute();
+
+			return $pdo -> fetchAll();
+
+		}
+
+		$pdo -> close();
+		$pdo = null;
+
+	}
+
+
+
 
 		static public function VerDoctoresTM($tablaBD, $columna, $valor){
 
@@ -89,8 +118,6 @@ class DoctoresM extends ConexionBD{
 
 
 	}
-
-
 
 		///Editar doctores
 

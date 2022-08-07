@@ -69,10 +69,8 @@ $borrarC -> BorrarConsultorioC();
 						<div class="btn-group">
 				<button class="btn btn-success EditarConsultorio" Cid="'.$value["idconsultorio"].'" data-toggle="modal" data-target="#EditarConsultorio">Editar</button></div>
 
-								<div class="btn-group">
-								<a onclick="return confirm(\'¿Seguro que desea eliminar el consultorio de '.$value["nombreconsultorio"].'?\')" href="http://localhost/clinica/consultorios/'.$value["idconsultorio"].'"">
-									<button class="btn btn-danger"> Borrar </button>
-								</a>
+					<div class="btn-group">
+			<button id="datos" data-toggle="modal" data-target="#EliminarConsultorio" class="btn btn-danger" Cid="'.$value["idconsultorio"].'">Borrar</button>
 							</div>
 
 						</td>
@@ -107,8 +105,7 @@ $borrarC -> BorrarConsultorioC();
 									<div class="form-group"> 
 
 										<h2>Nombre de consultorio:</h2>
-									<input type="text" class="form-control input-lg" name="consultorioN" id="consultorioN" placeholder="Ingrese nuevo consultorio" required
-					oninvalid="this.setCustomValidity('Ingrese el nombre del consultorio')"
+									<input type="text" class="form-control input-lg" name="consultorioN" id="consultorioN" placeholder="Ingrese nuevo consultorio" required oninvalid="this.setCustomValidity('Ingrese el nombre del consultorio')"
     				oninput="this.setCustomValidity('')"
 					><br>
 					<div class="modal-footer">

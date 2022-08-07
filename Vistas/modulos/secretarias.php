@@ -151,14 +151,14 @@ if($_SESSION["rol"] != "Administrador"){
 							
 							<h2>Usuario:</h2>
 
-							<input type="text" class="form-control input-lg" id="usuario" name="usuario" required>
+							<input type="text" class="form-control input-lg" id="usuario" minlength="4" name="usuario" required>
 
 						</div>
 						<div class="form-group">
 							
 							<h2>Contraseña:</h2>
 
-							<input type="text" class="form-control input-lg" id="clave" name="clave" required>
+							<input type="text" class="form-control input-lg" id="clave" minlength="4" name="clave" required>
 
 						</div>
 
@@ -224,7 +224,7 @@ if($_SESSION["rol"] != "Administrador"){
 							
 							<h2>Usuario:</h2>
 
-							<input type="text" class="form-control input-lg" id="usuarioE" name="usuarioE" required>
+							<input type="text" class="form-control input-lg" minlength="4" id="usuarioE" name="usuarioE" required>
 
 						</div>
 
@@ -232,7 +232,7 @@ if($_SESSION["rol"] != "Administrador"){
 							
 							<h2>Contraseña:</h2>
 
-							<input type="text" class="form-control input-lg" id="claveE" name="claveE" required>
+							<input type="text" class="form-control input-lg" minlength="4" id="claveE" name="claveE" required>
 
 						</div>
 

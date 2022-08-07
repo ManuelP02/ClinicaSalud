@@ -160,7 +160,7 @@ if($_SESSION["rol"] != "Secretaria" && $_SESSION["rol"] != "Doctor" && $_SESSION
 							
 							<h2>Nombre:</h2>
 
-							<input type="text" class="form-control input-lg" name="nombre" id="nombre" required>
+							<input type="text" class="form-control input-lg"  name="nombre" id="nombre" required>
 
 						</div>
 
@@ -199,14 +199,14 @@ if($_SESSION["rol"] != "Secretaria" && $_SESSION["rol"] != "Doctor" && $_SESSION
 							
 							<h2>Usuario:</h2>
 
-							<input type="text" class="form-control input-lg" name="usuario" id="usuario" required>
+							<input type="text" class="form-control input-lg" minlength="4" name="usuario" id="usuario" required>
 
 						</div>
 						<div class="form-group">
 							
 							<h2>Contraseña:</h2>
 
-							<input type="text" class="form-control input-lg" name="clave" id="clave" required>
+							<input type="text" class="form-control input-lg" minlength="4" name="clave" id="clave" required>
 
 						</div>
 
@@ -300,7 +300,7 @@ if($_SESSION["rol"] != "Secretaria" && $_SESSION["rol"] != "Doctor" && $_SESSION
 							
 							<h2>Documento:</h2>
 
-							<input type="text" class="form-control input-lg" id="documentoE" name="documentoE" required>
+							<input type="text" class="form-control input-lg" style="text-transform:uppercase" minlength="9" id="documentoE" name="documentoE" required>
 
 						</div>
 
@@ -308,14 +308,14 @@ if($_SESSION["rol"] != "Secretaria" && $_SESSION["rol"] != "Doctor" && $_SESSION
 							
 							<h2>Usuario:</h2>
 
-							<input type="text" class="form-control input-lg" id="usuarioE" name="usuarioE" required>
+							<input type="text" class="form-control input-lg" minlength="4" id="usuarioE" name="usuarioE" required>
 
 						</div>
 						<div class="form-group">
 							
 							<h2>Contraseña:</h2>
 
-							<input type="text" class="form-control input-lg" id="claveE" name="claveE" required>
+							<input type="text" class="form-control input-lg" minlength="4" id="claveE" name="claveE" required>
 
 						</div>
 

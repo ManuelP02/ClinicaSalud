@@ -62,17 +62,20 @@ class ConsultoriosC{
 
 	public function BorrarConsultorioC(){
 
-		if(substr($_GET["url"], 13)){
-
+		if(isset($_GET["Cid"])){
 			$tablaBD = "consultorios";
 
-			$idconsultorio = substr($_GET["url"], 13);
+			$idconsultorio = $_GET["Cid"];
 			
 			$resultado = ConsultoriosM::BorrarConsultorioM($tablaBD, $idconsultorio);
 
 			if($resultado == true){
 
-				echo '<script>
+				echo '
+				<script type="text/javascript">
+  					alert("Consultorio eliminado exitosamente");
+						</script>
+				<script>
 
 				window.location = "http://localhost/clinica/consultorios";
 

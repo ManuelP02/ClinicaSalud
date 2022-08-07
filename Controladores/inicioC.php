@@ -72,7 +72,7 @@ $pacientes = $resultpac->fetch_assoc();
 <div class="small-box bg-aqua">
 <div class="inner">
 <h3>'.$pacientes['idcita'].'</h3>
-<h3>Pacientes atendidos<h3>
+<h3>Citas generadas<h3>
 </div>
 <div class="icon">
 <i class="ion-medkit"></i>
@@ -102,23 +102,33 @@ $cobros = $resultcobr->fetch_assoc();
 echo'
 <br>
 <div class="small-box bg-green">
-<div class="inner">
-<h3>'.$cobros['pago'].' DOP</h3>
-<h3>Total ganancias</h3>
+<div class="inner">';
+if ($cobros['pago'] < 1){
+	echo'<h3>0</h3>
+<h3>No han generado ganancias</h3>
 </div>
 <div class="icon">
 <i class="ion-plus	"></i>
 </div>
 <a href="#" class="small-box-footer">Más información  <i class="fa fa-arrow-circle-right"></i></a>
 </div>
+	';
+} 
+else{
+		echo'<h3>'.$cobros['pago'].' DOP</h3>
+<h3>Total ganancias</h3>
+</div>
+<div class="icon">
+<i class="ion-plus	"></i>
+</div>
+<a href="#" class="small-box-footer">Más información  <i class="fa fa-arrow-circle-right"></i></a>
+</div>';
+}
 
 
 
 
-                      	 
-
-
-		';
+                      	
                      
                        }
 
@@ -161,7 +171,7 @@ $pacientes = $citas->fetch_assoc();
 <div class="small-box bg-aqua">
 <div class="inner">
 <h3>'.$pacientes['inicio'].'</h3>
-<h3>Su última cita<h3>
+<h3>Su última cita registrada<h3>
 </div>
 <div class="icon">
 <i class="ion-medkit"></i>
@@ -169,6 +179,27 @@ $pacientes = $citas->fetch_assoc();
 <a href="#" class="small-box-footer">Más información  <i class="fa fa-arrow-circle-right"></i></a>
 </div>
 <br>';
+
+require "cone.php";
+$documento = $_SESSION['documento'];
+$consulta = "SELECT COUNT(*) idcita FROM citas WHERE documento = $documento ";
+$citas = $mysqli->query($consulta);
+$pacientes = $citas->fetch_assoc();
+echo'
+<div class="small-box bg-orange">
+<div class="inner">
+<h3>'.$pacientes['idcita'].'</h3>
+<h3>Todas sus citas<h3>
+</div>
+<div class="icon">
+<i class="ion-asterisk"></i>
+</div>
+<a href="http://localhost/clinica/Recetas/'.$_SESSION["idpaciente"].'" class="small-box-footer">Más información  <i class="fa fa-arrow-circle-right"></i></a>
+</div>
+<br>
+
+
+';	
 
 require "cone.php";
 $idpaciente = $_SESSION['idpaciente'];
@@ -182,14 +213,15 @@ echo'
 <h3>Recetas generadas<h3>
 </div>
 <div class="icon">
-<i class="ion-folder"></i>
+<i class="ion-briefcase"></i>
 </div>
 <a href="http://localhost/clinica/Recetas/'.$_SESSION["idpaciente"].'" class="small-box-footer">Más información  <i class="fa fa-arrow-circle-right"></i></a>
 </div>
 
 
 
-';	
+';
+
                        }  
 
         if($_SESSION["rol"] == "Secretaria"){
@@ -239,6 +271,27 @@ $sec = $citas->fetch_assoc();
 <br>
 ';	
 require "cone.php";
+$consulta = "SELECT COUNT(*) idcita FROM citas WHERE DATE(inicio) = CURDATE()";
+$citas = $mysqli->query($consulta);
+$sec = $citas->fetch_assoc();
+
+ echo'
+                   
+
+<div class="small-box bg-orange">
+<div class="inner">
+<h3>'.$sec['idcita'].'</h3>
+<h3>Citas de hoy<h3>
+</div>
+<div class="icon">
+<i class="ion-asterisk"></i>
+</div>
+<a href="#" class="small-box-footer">Más información  <i class="fa fa-arrow-circle-right"></i></a>
+</div>
+<br>
+';	
+
+require "cone.php";
 $consulta = "SELECT COUNT(*) idreceta FROM recetas";
 $citas = $mysqli->query($consulta);
 $sec = $citas->fetch_assoc();
@@ -252,12 +305,13 @@ $sec = $citas->fetch_assoc();
 <h3>Recetas se han generado<h3>
 </div>
 <div class="icon">
-<i class="ion-medkit"></i>
+<i class="ion-briefcase"></i>
 </div>
 <a href="#" class="small-box-footer">Más información  <i class="fa fa-arrow-circle-right"></i></a>
 </div>
 <br>
 ';	
+
                        }                 
 
 
@@ -278,6 +332,7 @@ $sec = $citas->fetch_assoc();
 
 		$resultado = InicioM::MostrarInicioM($tablaBD, $id);
 
+		$intro = $resultado["intro"];
 		echo '<form method="post" enctype="multipart/form-data">
 					
 				<div class="row">
@@ -285,7 +340,14 @@ $sec = $citas->fetch_assoc();
 					<div class="col-md-6 col-xs-12">
 						
 						<h2>Introducción:</h2>
-						<input type="text" class="input-lg" name="intro" value="'.$resultado["intro"].'">
+						
+						<textarea class="form-control" name="intro" required rows="7">';
+						?>
+						<?php 
+
+						echo $intro; 
+						echo'						
+						</textarea>	
 						<input type="hidden" class="input-lg" name="Iid" value="'.$resultado["id"].'">
 
 						<div class=form-group>
@@ -296,7 +358,7 @@ $sec = $citas->fetch_assoc();
 						</div>
 
 						<h2>Dirección:</h2>
-						<input type="text" class="input-lg" name="direccion" value="'.$resultado["direccion"].'">
+						<input type="text" class="input-lg" name="direccion" style="width: 530px;" value="'.$resultado["direccion"].'">
 
 						<h2>Teléfono:</h2>
 						<input type="text" class="input-lg" name="telefono" value="'.$resultado["telefono"].'">

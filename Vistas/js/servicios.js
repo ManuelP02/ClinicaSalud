@@ -103,3 +103,56 @@ datos.append("Norepetir", servicio);
 
 
 })
+
+
+
+
+function createModal(){
+let Sid = '';
+
+const div = document.createElement("div");
+
+const modal = `<div id="EliminarServicio" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <center><h2 style="color: red" class="modal-title"><strong>¡CUIDADO!</strong></h2></center>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <center><h4 class="modal-title">Estás a punto de eliminar un servicio</h4></center>
+      </div>
+      <div class="modal-body">
+        <center><label style="font-size: 25px">¿Desea eliminar servicio?</label></center>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger EliminarServicio"><strong>Eliminar</strong></button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>`
+
+div.innerHTML = modal;
+
+document.body.appendChild(div.firstElementChild);
+
+}
+
+
+
+createModal();
+
+
+$(".DT").on("click", "#datos", function(e){
+
+	Sid = $(this).attr("Sid");
+})
+
+
+
+$("#EliminarServicio").on("click", ".EliminarServicio", function(e){
+
+window.location = "index.php?url=servicios&Sid="+Sid;
+
+})

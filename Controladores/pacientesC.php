@@ -253,10 +253,11 @@ class PacientesC{
 
 						<input type="text" disabled class="input-lg" name="documentoPerfil" value="'.$resultado["documento"].'">
 						<h2>Usuario:</h2>
-						<input type="text" class="input-lg" name="usuarioPerfil" value="'.$resultado["usuario"].'">
-						<h2>Clave</h2>
-						<input type="text" class="input-lg" name="clavePerfil" value="'.$resultado["clave"].'">
-
+						<small>Debe ser editado por una secretaria o doctor</small><br>
+						<input type="text" readonly class="input-lg" name="usuarioPerfil" value="'.$resultado["usuario"].'">
+						<h2>Contraseña</h2>
+						<input type="text" minlength="4" class="input-lg" name="clavePerfil" value="'.$resultado["clave"].'">
+ 
 							</div>
 
 							<div class="col-md-6 col-xs-12">

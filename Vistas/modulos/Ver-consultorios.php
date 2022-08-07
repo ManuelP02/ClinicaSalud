@@ -36,7 +36,7 @@ if($_SESSION["rol"] != "Paciente"){
 
 				echo'
 
-			<div class="col-lg-3 col-xs-6">
+			<div class="col-lg-6 col-xs-6">
         
           <div class="small-box" style="background-image: linear-gradient(180deg, #505467 0, #1f3259 50%, #00154b 100%);">
             <div class="inner">
@@ -46,7 +46,7 @@ if($_SESSION["rol"] != "Paciente"){
               $columna = "idconsultorio";
               $valor = $value["idconsultorio"];
 
-              $doctores = DoctoresC::VerDoctoresC($columna, $valor);
+              $doctores = DoctoresC::VerDoctoresConsultorioC($columna, $valor);
 
               foreach ($doctores as $key => $value) {
               	echo'<a style="color: white; font-style: italic;" href="Doctor/'.$value["id"].'" style="color: silver;"><p>'.($key+1).'-'.$value["apellido"].' '.$value["nombre"].'</p></a> ';

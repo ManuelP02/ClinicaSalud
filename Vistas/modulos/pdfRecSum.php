@@ -125,14 +125,13 @@ require "cone.php";
     }
 
 
-$sql = "SELECT r.id_doctor, r.idconsultorio, r.idpaciente, r.medicamento, r.fecha, d.nombre AS doctornombre, d.apellido AS doctorapellido, c.nombreconsultorio, p.Apaterno, p.Amaterno, p.nombre  FROM recetas AS r
-INNER JOIN doctores AS d ON r.id_doctor=d.id
-INNER JOIN consultorios as c ON r.idconsultorio=c.idconsultorio
-INNER JOIN pacientes as p ON r.idpaciente=p.idpaciente
+$sql = "SELECT COUNT(*)idreceta, r.idconsultorio, nombreconsultorio FROM recetas as r
+INNER JOIN consultorios AS c ON r.idconsultorio = c.idconsultorio
+WHERE r.idreceta IS NOT NULL GROUP BY nombreconsultorio ASC
 ";
     $resultado = $mysqli->query($sql);
      $datos = $resultado->fetch_assoc();
-    if(empty($datos["nombreconsultorio"])){
+    if(empty($datos["idconsultorio"])){
          $pdf = new text();
          $pdf->AddPage();
         $pdf->SetTitle("Recetas no registradas");
@@ -145,31 +144,22 @@ INNER JOIN pacientes as p ON r.idpaciente=p.idpaciente
              $pdf = new text();
     $pdf->AliasNbPages();
     $pdf->AddPage();
-      $pdf->SetTitle("Reporte de recetas");
+      $pdf->SetTitle("Sumatoria de recetas");
       $pdf->SetFont("Arial", "B", 20);
-    $pdf->Cell(290, 0, "Todas las recetas", 0, 1, "C");
+    $pdf->Cell(290, 0, "Sumatoria de recetas por consultorios", 0, 1, "C");
     $pdf->Ln(5);
 
      $pdf->SetFont("Arial", "B", 12);
-     $pdf->Cell(25, 5, "#", 1, 0, "C");
-     $pdf->Cell(55, 5, "Paciente", 1, 0, "C");
-    $pdf->Cell(55, 5, "Doctor", 1, 0, "C");
-    $pdf->Cell(45, 5, "Consultorio", 1, 0, "C");
-    $pdf->Cell(65, 5, "Medicamento", 1, 0, "C");
-        $pdf->Cell(35, 5, "Fecha creación", 1, 0, "C");
-
-
-
-     $pdf->SetFont("Arial", "", 10);
+     $pdf->Cell(85, 5, "#", 1, 0, "C");
+    $pdf->Cell(85, 5, "Consultorio", 1, 0, "C");
+    $pdf->Cell(100, 5, "Número de recetas generadas", 1, 0, "C");
+     $pdf->SetFont("Arial", "", 11);
      $pdf->Ln(5);
      foreach ($resultado as $key => $value){
-         $pdf->Cell(25, 5,  ($key+1), 1, 0, "C");
-         $pdf->Cell(55, 5, $value['nombre']." ".$value['Apaterno'], 1, 0, "C");
-         $pdf->Cell(55, 5, $value['doctornombre']." ".$value['doctorapellido'] , 1, 0, "C");
-         $pdf->Cell(45, 5, $value['nombreconsultorio'], 1, 0, "C");
-         $pdf->Cell(65, 5, $value['medicamento'], 1, 0, "C");
-         $pdf->Cell(35, 5, $value['fecha'], 1, 0, "C");
-         $pdf->Ln(5);
+         $pdf->Cell(85, 5,  ($key+1), 1, 0, "C");
+         $pdf->Cell(85, 5, $value['nombreconsultorio'], 1, 0, "C");
+         $pdf->Cell(100, 5, $value['idreceta'], 1, 0, "C");
+$pdf->Ln(5);
          
 }   
         }

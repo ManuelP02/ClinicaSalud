@@ -66,12 +66,20 @@
                 <li><a href="pdfCitas" target="_blank"><i class="fa fa-circle-o"></i>Todas las citas</a></li>
               </ul>
             </li>
-                              <li>
-          <a href="http://localhost/clinica/pdfRecCons" target="_blank">
-            <i class="fa fa-list-alt"></i>
-            <span>Informe de recetas</span>
-          </a>
-        </li>
+
+          <li class="treeview">
+              <a href="#">
+                <i class="fa fa-list-alt"></i>
+                <span>Informes de recetas</span>
+                 <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu" style="display: none;">
+                <li><a href="repRecetasCons"><i class="fa fa-circle-o"></i> Por consultorios</a></li>
+                <li><a href="repRecetasDoct"><i class="fa fa-circle-o"></i> Por doctores</a></li>
+                <li><a href="pdfRecCons" target="_blank"><i class="fa fa-circle-o"></i>Todas las recetas</a></li>
+                 <li><a href="pdfRecSum" target="_blank"><i class="fa fa-circle-o"></i>Sumatoria por consultorios</a></li>
+              </ul>
+            </li>
 
 
       </ul>

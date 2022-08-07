@@ -29,6 +29,19 @@ $resultado = DoctoresM::CrearDoctorM($tablaBD, $datosC);
 
 	}
 
+	//Ver doctores consultorios 
+
+	static public function VerDoctoresConsultorioC($columna, $valor){
+
+		$tablaBD = "doctores";
+
+		$resultado = DoctoresM::VerDoctoresConsultorioM($tablaBD, $columna, $valor);
+
+		return $resultado;
+
+	}
+
+
 	///Ver doctores 
 
 	static public function VerDoctoresC($columna, $valor){
@@ -252,13 +265,14 @@ public function BorrarDoctorC(){
 					
 
 							<h2>Usuario:</h2>
-							<input type="text" class="input-lg" name="usuarioPerfil" value="'.$resultado["usuario"].'">
+							<small>Debe ser editado por un administrador o secretaria</small><br>
+							<input type="text" class="input-lg" readonly name="usuarioPerfil" value="'.$resultado["usuario"].'">
 							
 
 
 
 							<h2>Contraseña:</h2>
-							<input type="text" class="input-lg" name="clavePerfil" value="'.$resultado["clave"].'">';
+							<input type="text" class="input-lg"  minlength="4" name="clavePerfil" value="'.$resultado["clave"].'">';
 
 
 				$columna = "idconsultorio";

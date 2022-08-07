@@ -113,10 +113,11 @@ class SecretariasC{
 					<input type="text" class="input-lg" name="apellidoP" value="'.$resultado["apellido"].'">
 
 					<h2>Usuario:</h2>
-					<input type="text" class="input-lg" name="usuarioP" value="'.$resultado["usuario"].'">
+					<small>Debe ser editado por un administrador</small><br>
+					<input type="text" readonly class="input-lg" name="usuarioP" value="'.$resultado["usuario"].'">
 
 					<h2>Contraseña:</h2>
-					<input type="text" class="input-lg" name="claveP" value="'.$resultado["clave"].'">
+					<input type="text" minlength="4" class="input-lg" name="claveP" value="'.$resultado["clave"].'">
 
 						</div>
 

@@ -107,21 +107,27 @@
 
 		public function BorrarServicioC(){
 
-			if(substr($_GET["url"], 10)){
+			if(isset($_GET["Sid"])){
+			$tablaBD = "servicios";
 
-				$tablaBD = "servicios";
-
-				$idservicio = substr($_GET["url"], 10);
+			$idservicio = $_GET["Sid"];
 
 				$resultado = ServiciosM::BorrarServicioM($tablaBD, $idservicio);
 
 				if($resultado == true){
 
-				echo '<script>
+				echo '
+				<script type="text/javascript">
+  					alert("Servicio eliminado exitosamente");
+						</script>
+
+						<script>
 
 				window.location = "http://localhost/clinica/servicios";
 
-				</script>';
+				</script>
+
+				';
 			}
 
 

@@ -66,12 +66,9 @@ if($_SESSION["rol"] != "Administrador"){
 						<td>
 							 <div class="btn-group">
         <button class="btn btn-success EditarServicio" Sid="'.$value["idservicio"].'" data-toggle="modal" data-target="#EditarServicio">Editar</button></div>
-							<div class="btn-group">
-
-								<a  onclick="return confirm(\'¿Seguro que desea eliminar el servicio de '.$value["nombre"].' que pertenece al Consultorio de '.$consultorio["nombreconsultorio"].'?\')"href="http://localhost/clinica/servicios/'.$value["idservicio"].'"">
-									<button class="btn btn-danger"> Borrar </button>
-								</a>
-							</div>
+							   <div class="btn-group">
+      <button id="datos" data-toggle="modal" data-target="#EliminarServicio" class="btn btn-danger" Sid="'.$value["idservicio"].'">Borrar</button>
+              </div>
 
 						</td>
 
@@ -112,7 +109,7 @@ if($_SESSION["rol"] != "Administrador"){
                           </div>
 
                     <div class="form-group">
-                  <h2>Costo del servicio:</h2>
+                  <h2>Costo del servicio: <small>(DOP)</small></h2>
                   <input type="number" class="form-control input-lg" required name="costoservicioN" placeholder="Costo" oninvalid="this.setCustomValidity('Ingrese el costo del servicio')"
     oninput="this.setCustomValidity('')">
                           </div>

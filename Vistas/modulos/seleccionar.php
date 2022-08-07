@@ -27,7 +27,7 @@
   
   <div class="page-header">
      <div class="login-logo">
-    <center><img src="Vistas/img/logos.png" class="img-responsive" style="margin-top: 1%"></center><br>
+    <center><img src="http://localhost/clinica/Vistas/img/logo2.png" class="img-responsive" style="margin-top: 1%"></center>
     <center>
     <p style="font-family: monospace; font-size: 15px;">12,658+ <strong>Pacientes atendidos</strong> <i class="fa fa-users" aria-hidden="true"></i> / 40+ <strong>Doctores especializados</strong> <i class="fa fa-user-md" aria-hidden="true"></i> / 24+ <strong>Años de experiencia</strong> <i class="fa fa-star" aria-hidden="true"></i>
  / 12+ <strong>Reconocimientos nacionales</strong> <i class="fa fa-certificate" aria-hidden="true"></i>

@@ -110,10 +110,10 @@ public function EditarPerfilAdminC(){
 					<input type="text" class="input-lg" name="apellidoP" value="'.$resultado["apellido"].'">
 
 					<h2>Usuario:</h2>
-					<input type="text" class="input-lg" name="usuarioP" value="'.$resultado["usuario"].'">
+					<input type="text" class="input-lg" minlength="4" name="usuarioP" value="'.$resultado["usuario"].'">
 
 					<h2>Contraseña:</h2>
-					<input type="text" class="input-lg" name="claveP" value="'.$resultado["clave"].'">
+					<input type="text" class="input-lg" minlength="4" name="claveP" value="'.$resultado["clave"].'">
 
 						</div>
 
