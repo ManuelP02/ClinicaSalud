@@ -138,7 +138,7 @@ if($_SESSION["rol"] != "Secretaria" && $_SESSION["rol"] != "Doctor" && $_SESSION
 				<div class="modal-body">
 					
 					<div class="box-body">
-						
+						 <center><h1 class="modal-title"><strong>Crear paciente</strong></h1></center>
 						<div class="form-group">
 							<center><small>Los campos marcados con (*) son obligatorios para crear el paciente</small></center>
 							
@@ -261,7 +261,7 @@ if($_SESSION["rol"] != "Secretaria" && $_SESSION["rol"] != "Doctor" && $_SESSION
 				<div class="modal-body">
 					
 					<div class="box-body">
-						
+						 <center><h1 class="modal-title"><strong>Editar paciente</strong></h1></center>
 						<div class="form-group">
 							<center><small>Los campos marcados con (*) son obligatorios para editar al paciente</small></center>
 							<h2>Apellido Paterno:(*)</h2>

@@ -195,8 +195,8 @@ session_start();
 
     $('#calendar').fullCalendar({
 
-      hiddenDays: [1,8],
-      defaultView: 'agendaDay', /////agendaWeek,agendaDay
+      // hiddenDays: [1], // Aqui se seleccionan los dias libres o no
+      defaultView: 'agendaWeek', /////agendaWeek,agendaDay
        selectable: true,
          validRange: {
       start: new Date(),

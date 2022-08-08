@@ -101,7 +101,7 @@ $borrarC -> BorrarConsultorioC();
 				
 						<div class="modal-body">
 								<div class="box-body"> 
-
+									 <center><h1 class="modal-title"><strong>Crear consultorio</strong></h1></center>
 									<div class="form-group"> 
 										<center><small>Los campos marcados con (*) son obligatorios para crear el consultorio</small></center>
 										<h2>Nombre de consultorio:(*)</h2>
@@ -142,7 +142,7 @@ $borrarC -> BorrarConsultorioC();
 						<div class="modal-body">
 
 							<div class="box-body">
-
+								 <center><h1 class="modal-title"><strong>Editar consultorio</strong></h1></center>
 								<div class="form-group">
 									<center><small>Los campos marcados con (*) son obligatorios para editar el consultorio</small></center>
 									<h2>Editar consultorio:(*)</h2>

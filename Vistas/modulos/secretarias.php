@@ -128,9 +128,9 @@ if($_SESSION["rol"] != "Administrador"){
 				<div class="modal-body">
 					
 					<div class="box-body">
-						
+						 <center><h1 class="modal-title"><strong>Crear secretaria</strong></h1></center>
 						<div class="form-group">
-							<center><small>Los campos marcados con (*) son obligatorios para crear el paciente</small></center>
+							<center><small>Los campos marcados con (*) son obligatorios para crear la secretaria</small></center>
 							<h2>Apellido:(*)</h2>
 
 							<input type="text" class="form-control input-lg" id="apellido" name="apellido" required oninvalid="this.setCustomValidity('Ingrese el apellido')"
@@ -209,6 +209,7 @@ if($_SESSION["rol"] != "Administrador"){
 				
 				<div class="modal-body">
 					<div class="box-body">
+						 <center><h1 class="modal-title"><strong>Editar secretaria</strong></h1></center>
 						<div class="form-group">
 							<center><small>Los campos marcados con (*) son obligatorios para editar la secretaria</small></center>
 							<h2>Apellido:(*)</h2>

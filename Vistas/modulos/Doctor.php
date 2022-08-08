@@ -80,6 +80,7 @@ if($_SESSION["rol"] != "Paciente"){
 				<div class="modal-body"> 
 
 				<div class="box-body">
+					 <center><h1 class="modal-title"><strong>Crear cita</strong></h1></center>
 
 					<?php 
 

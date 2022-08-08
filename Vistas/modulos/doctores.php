@@ -126,7 +126,7 @@ if($_SESSION["rol"] != "Secretaria" && $_SESSION["rol"] != "Administrador"){
 				<div class="modal-body">
 					
 					<div class="box-body">
-						
+						 <center><h1 class="modal-title"><strong>Crear doctor</strong></h1></center>
 						<div class="form-group">
 								<center><small>Los campos marcados con (*) son obligatorios para crear el doctor</small></center>
 							<h2>Apellido:(*)</h2>
@@ -247,7 +247,7 @@ if($_SESSION["rol"] != "Secretaria" && $_SESSION["rol"] != "Administrador"){
 				<div class="modal-body">
 					
 					<div class="box-body">
-						
+						 <center><h1 class="modal-title"><strong>Editar doctor</strong></h1></center>
 						<div class="form-group">
 							<center><small>Los campos marcados con (*) son obligatorios para editar al doctor</small></center>
 							<h2>Apellido:(*)</h2>

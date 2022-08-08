@@ -100,7 +100,7 @@ if($_SESSION["rol"] != "Administrador"){
             <div class="modal-body">
 
               <div class="box-body">
-
+                 <center><h1 class="modal-title"><strong>Crear servicio</strong></h1></center>
                 <div class="form-group">
                   <center><small>Los campos marcados con (*) son obligatorios para crear el servicio</small></center>
                   <h2>Nombre del servicio:(*)</h2>
