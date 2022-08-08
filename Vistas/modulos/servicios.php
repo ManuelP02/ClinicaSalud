@@ -102,20 +102,21 @@ if($_SESSION["rol"] != "Administrador"){
               <div class="box-body">
 
                 <div class="form-group">
-                  <h2>Nombre del servicio:</h2>
+                  <center><small>Los campos marcados con (*) son obligatorios para crear el servicio</small></center>
+                  <h2>Nombre del servicio:(*)</h2>
                   <input type="text" class="form-control input-lg" required name="servicioN" id="servicioN" placeholder="Nombre"
                             oninvalid="this.setCustomValidity('Ingrese el nombre del servicio')"
                             oninput="this.setCustomValidity('')">
                           </div>
 
                     <div class="form-group">
-                  <h2>Costo del servicio: <small>(DOP)</small></h2>
+                  <h2>Costo del servicio:(*) <small>(DOP)</small></h2>
                   <input type="number" class="form-control input-lg" required name="costoservicioN" placeholder="Costo" oninvalid="this.setCustomValidity('Ingrese el costo del servicio')"
     oninput="this.setCustomValidity('')">
                           </div>
 
                   <div class="form-group">
-                  <h2>Consultorio al que pertenecerá el servicio:</h2>
+                  <h2>Consultorio al que pertenecerá:(*)</h2>
                    <select class="form-control selectpicker input-lg" name="idconsultorio">
                      <?php 
 
@@ -159,20 +160,21 @@ if($_SESSION["rol"] != "Administrador"){
               <div class="box-body">
                 <center><h1 class="modal-title"><strong>Editar servicio</strong></h1></center>
                 <div class="form-group">
-                  <h2>Nombre del servicio:</h2>
+                  <center><small>Los campos marcados con (*) son obligatorios para editar el servicio</small></center>
+                  <h2>Nombre del servicio:(*)</h2>
                   <input type="text" class="form-control input-lg" required name="servicioE" id="servicioE" placeholder="Nombre"
                             oninvalid="this.setCustomValidity('Ingrese el nombre del servicio')"
                             oninput="this.setCustomValidity('')">
                           </div>
                           <input type="hidden" id="Sid" name="Sid">
                     <div class="form-group">
-                  <h2>Costo del servicio: <small>(DOP)</small></h2>
+                  <h2>Costo del servicio:(*) <small>(DOP)</small></h2>
                   <input type="number" class="form-control input-lg" required name="costoservicioE" id="costoservicioE" placeholder="Costo" oninvalid="this.setCustomValidity('Ingrese el costo del servicio')"
     oninput="this.setCustomValidity('')">
                           </div>
 
                   <div class="form-group">
-                  <h2>Consultorio al que pertenece el servicio:</h2>
+                  <h2>Consultorio al que pertenece el servicio:(*)</h2>
                    <select class="form-control selectpicker input-lg" name="idconsultorio" id="idconsultorio">
                      <?php 
 

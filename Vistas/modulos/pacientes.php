@@ -140,41 +140,46 @@ if($_SESSION["rol"] != "Secretaria" && $_SESSION["rol"] != "Doctor" && $_SESSION
 					<div class="box-body">
 						
 						<div class="form-group">
+							<center><small>Los campos marcados con (*) son obligatorios para crear el paciente</small></center>
 							
-							<h2>Apellido Paterno:</h2>
+							<h2>Apellido Paterno:(*)</h2>
 
-							<input type="text" class="form-control input-lg" name="Apaterno" id="Apaterno" required>
+							<input type="text" class="form-control input-lg" name="Apaterno" id="Apaterno" required oninvalid="this.setCustomValidity('Ingrese el apellido paterno')"
+    				oninput="this.setCustomValidity('')">
 
 							<input type="hidden" name="rolP" value="Paciente"required>
 
 						</div>
 						<div class="form-group">
 							
-							<h2>Apellido materno:</h2>
+							<h2>Apellido materno:(*)</h2>
 
-							<input type="text" class="form-control input-lg" name="Amaterno" id="Amaterno" required>
-
-						</div>
-
-						<div class="form-group">
-							
-							<h2>Nombre:</h2>
-
-							<input type="text" class="form-control input-lg"  name="nombre" id="nombre" required>
+							<input type="text" class="form-control input-lg" name="Amaterno" id="Amaterno" required oninvalid="this.setCustomValidity('Ingrese el apellido materno')"
+    				oninput="this.setCustomValidity('')">
 
 						</div>
 
 						<div class="form-group">
 							
-							<h2>Fecha de nacimiento:</h2>
+							<h2>Nombre:(*)</h2>
 
-							<input type="date" class="form-control input-lg" name="fecha" id="fecha" required>
+							<input type="text" class="form-control input-lg"  name="nombre" id="nombre" required oninvalid="this.setCustomValidity('Ingrese el nombre')"
+    				oninput="this.setCustomValidity('')">
+
+						</div>
+
+						<div class="form-group">
+							
+							<h2>Fecha de nacimiento:(*)</h2>
+
+							<input type="date" class="form-control input-lg" name="fecha" id="fecha" required oninvalid="this.setCustomValidity('Ingrese la fecha de nacimiento')"
+    				oninput="this.setCustomValidity('')">
 
 						</div>
 
 
 						<div class="form-group">
-							<h2>Sexo</h2>
+							<h2>Sexo:(*)</h2>
 						<select class="form-control input-lg" name="sexo" id="sexo">
 							
 								<option>Seleccionar...</option>
@@ -186,10 +191,11 @@ if($_SESSION["rol"] != "Secretaria" && $_SESSION["rol"] != "Doctor" && $_SESSION
 
 						<div class="form-group">
 							
-							<h2>Documento:</h2>
+							<h2>Documento:(*)</h2>
 							<small>Cédula o pasaporte</small>
 
-							<input type="text" style="text-transform:uppercase"  class="form-control input-lg" name="documento" id="documento" minlength="9"  required>
+							<input type="text" style="text-transform:uppercase"  class="form-control input-lg" name="documento" id="documento" minlength="9"  required oninvalid="this.setCustomValidity('Ingrese el documento (mínimo 9 carácteres)')"
+    				oninput="this.setCustomValidity('')">
 
 						</div>
 
@@ -197,16 +203,20 @@ if($_SESSION["rol"] != "Secretaria" && $_SESSION["rol"] != "Doctor" && $_SESSION
 
 						<div class="form-group">
 							
-							<h2>Usuario:</h2>
+							<h2>Usuario:(*)</h2>
 
-							<input type="text" class="form-control input-lg" minlength="4" name="usuario" id="usuario" required>
+							<input type="text" class="form-control input-lg" minlength="4" name="usuario" id="usuario" required oninvalid="this.setCustomValidity('Ingrese el usuario (mínimo 4 carácteres)')"
+    				oninput="this.setCustomValidity('')">
 
 						</div>
 						<div class="form-group">
 							
-							<h2>Contraseña:</h2>
+							<h2>Contraseña:(*)</h2>
 
-							<input type="text" class="form-control input-lg" minlength="4" name="clave" id="clave" required>
+							<input type="text" class="form-control input-lg" minlength="4" name="clave" id="clave" required
+							oninvalid="this.setCustomValidity('Ingrese la contraseña (mínimo 4 carácteres)')"
+    				oninput="this.setCustomValidity('')"
+							>
 
 						</div>
 
@@ -253,39 +263,43 @@ if($_SESSION["rol"] != "Secretaria" && $_SESSION["rol"] != "Doctor" && $_SESSION
 					<div class="box-body">
 						
 						<div class="form-group">
-							
-							<h2>Apellido Paterno:</h2>
+							<center><small>Los campos marcados con (*) son obligatorios para editar al paciente</small></center>
+							<h2>Apellido Paterno:(*)</h2>
 
-				<input type="text" class="form-control input-lg" id="ApaternoE" name="ApaternoE" required>
+				<input type="text" class="form-control input-lg" id="ApaternoE" name="ApaternoE" required oninvalid="this.setCustomValidity('Ingrese el apellido paterno')"
+    				oninput="this.setCustomValidity('')">
 							<input type="hidden" id="Pid" name="Pid">
 
 						</div>
 						<div class="form-group">
 							
-							<h2>Apellido materno:</h2>
+							<h2>Apellido materno:(*)</h2>
 
-							<input type="text" class="form-control input-lg" id="AmaternoE" name="AmaternoE" required>
+							<input type="text" class="form-control input-lg" id="AmaternoE" name="AmaternoE" required oninvalid="this.setCustomValidity('Ingrese el apellido materno')"
+    				oninput="this.setCustomValidity('')">
 
 						</div>
 
 						<div class="form-group">
 							
-							<h2>Nombre:</h2>
+							<h2>Nombre:(*)</h2>
 
-				<input type="text" class="form-control input-lg" id="nombreE" name="nombreE" required>
+				<input type="text" class="form-control input-lg" id="nombreE" name="nombreE" required oninvalid="this.setCustomValidity('Ingrese el nombre')"
+    				oninput="this.setCustomValidity('')">
 
 						</div>
 
 				<div class="form-group">
 							
-							<h2>Fecha de nacimiento:</h2>
+							<h2>Fecha de nacimiento:(*)</h2>
 
-							<input type="date" class="form-control input-lg" name="fechaE" id="fechaE" required>
+							<input type="date" class="form-control input-lg" name="fechaE" id="fechaE" required oninvalid="this.setCustomValidity('Ingrese la fecha de nacimiento')"
+    				oninput="this.setCustomValidity('')">
 
 						</div>
 
 					<div class="form-group">
-							<h2>Sexo:</h2>
+							<h2>Sexo:(*)</h2>
 							<select class="form-control input-lg" name="sexoE" id="sexoE" required="">
 								
 								<option id="sexoE">Seleccionar...</option>
@@ -298,24 +312,27 @@ if($_SESSION["rol"] != "Secretaria" && $_SESSION["rol"] != "Doctor" && $_SESSION
 						</div>
 						<div class="form-group">
 							
-							<h2>Documento:</h2>
+							<h2>Documento:(*)</h2>
 
-							<input type="text" class="form-control input-lg" style="text-transform:uppercase" minlength="9" id="documentoE" name="documentoE" required>
+							<input type="text" class="form-control input-lg" style="text-transform:uppercase" minlength="9" id="documentoE" name="documentoE" required oninvalid="this.setCustomValidity('Ingrese el documento (mínimo 9 carácteres)')"
+    				oninput="this.setCustomValidity('')">
 
 						</div>
 
 						<div class="form-group">
 							
-							<h2>Usuario:</h2>
+							<h2>Usuario:(*)</h2>
 
-							<input type="text" class="form-control input-lg" minlength="4" id="usuarioE" name="usuarioE" required>
+							<input type="text" class="form-control input-lg" minlength="4" id="usuarioE" name="usuarioE" required oninvalid="this.setCustomValidity('Ingrese el usuario (mínimo 4 carácteres)')"
+    				oninput="this.setCustomValidity('')">
 
 						</div>
 						<div class="form-group">
 							
-							<h2>Contraseña:</h2>
+							<h2>Contraseña:(*)</h2>
 
-							<input type="text" class="form-control input-lg" minlength="4" id="claveE" name="claveE" required>
+							<input type="text" class="form-control input-lg" minlength="4" id="claveE" name="claveE" required oninvalid="this.setCustomValidity('Ingrese la contraseña (mínimo 4 carácteres)')"
+    				oninput="this.setCustomValidity('')">
 
 						</div>
 

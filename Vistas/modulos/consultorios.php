@@ -103,8 +103,8 @@ $borrarC -> BorrarConsultorioC();
 								<div class="box-body"> 
 
 									<div class="form-group"> 
-
-										<h2>Nombre de consultorio:</h2>
+										<center><small>Los campos marcados con (*) son obligatorios para crear el consultorio</small></center>
+										<h2>Nombre de consultorio:(*)</h2>
 									<input type="text" class="form-control input-lg" name="consultorioN" id="consultorioN" placeholder="Ingrese nuevo consultorio" required oninvalid="this.setCustomValidity('Ingrese el nombre del consultorio')"
     				oninput="this.setCustomValidity('')"
 					><br>
@@ -144,8 +144,8 @@ $borrarC -> BorrarConsultorioC();
 							<div class="box-body">
 
 								<div class="form-group">
-
-									<h2>Editar consultorio:</h2>
+									<center><small>Los campos marcados con (*) son obligatorios para editar el consultorio</small></center>
+									<h2>Editar consultorio:(*)</h2>
 					<input type="text" class="form-control input-lg" name="consultorioE" id="consultorioE">
 					<input type="hidden" id="Cid" name="Cid">
 						<div class="modal-footer">

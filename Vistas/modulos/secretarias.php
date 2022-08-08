@@ -130,35 +130,43 @@ if($_SESSION["rol"] != "Administrador"){
 					<div class="box-body">
 						
 						<div class="form-group">
-							
-							<h2>Apellido:</h2>
+							<center><small>Los campos marcados con (*) son obligatorios para crear el paciente</small></center>
+							<h2>Apellido:(*)</h2>
 
-							<input type="text" class="form-control input-lg" id="apellido" name="apellido" required>
+							<input type="text" class="form-control input-lg" id="apellido" name="apellido" required oninvalid="this.setCustomValidity('Ingrese el apellido')"
+    				oninput="this.setCustomValidity('')">
 							<input type="hidden" name="rolS" value="Secretaria"required>
 
 						</div>
 
 						<div class="form-group">
 							
-							<h2>Nombre:</h2>
+							<h2>Nombre:(*)</h2>
 
-							<input type="text" class="form-control input-lg" id="nombre" name="nombre" required>
+							<input type="text" class="form-control input-lg" id="nombre" name="nombre" required
+							oninvalid="this.setCustomValidity('Ingrese el nombre')"
+    				oninput="this.setCustomValidity('')"
+							>
 
 						</div>
 
 
 						<div class="form-group">
 							
-							<h2>Usuario:</h2>
+							<h2>Usuario:(*)</h2>
 
-							<input type="text" class="form-control input-lg" id="usuario" minlength="4" name="usuario" required>
+							<input type="text" class="form-control input-lg" id="usuario" minlength="4" name="usuario" required oninvalid="this.setCustomValidity('Ingrese el usuario (mínimo 4 carácteres)')"
+    				oninput="this.setCustomValidity('')">
 
 						</div>
 						<div class="form-group">
 							
-							<h2>Contraseña:</h2>
+							<h2>Contraseña:(*)</h2>
 
-							<input type="text" class="form-control input-lg" id="clave" minlength="4" name="clave" required>
+							<input type="text" class="form-control input-lg" id="clave" minlength="4" name="clave" required
+							oninvalid="this.setCustomValidity('Ingrese la contraseña (mínimo 4 carácteres)')"
+    				oninput="this.setCustomValidity('')"
+							>
 
 						</div>
 
@@ -202,10 +210,11 @@ if($_SESSION["rol"] != "Administrador"){
 				<div class="modal-body">
 					<div class="box-body">
 						<div class="form-group">
-							
-							<h2>Apellido:</h2>
+							<center><small>Los campos marcados con (*) son obligatorios para editar la secretaria</small></center>
+							<h2>Apellido:(*)</h2>
 
-							<input type="text" class="form-control input-lg" id="apellidoE" name="apellidoE" required>
+							<input type="text" class="form-control input-lg" id="apellidoE" name="apellidoE" required oninvalid="this.setCustomValidity('Ingrese el apellido')"
+    				oninput="this.setCustomValidity('')">
 
 							<input type="hidden" id="Sid" name="Sid">
 
@@ -213,9 +222,10 @@ if($_SESSION["rol"] != "Administrador"){
 
 						<div class="form-group">
 							
-							<h2>Nombre:</h2>
+							<h2>Nombre:(*)</h2>
 
-							<input type="text" class="form-control input-lg" id="nombreE" name="nombreE" required>
+							<input type="text" class="form-control input-lg" id="nombreE" name="nombreE" required oninvalid="this.setCustomValidity('Ingrese el nombre')"
+    				oninput="this.setCustomValidity('')">
 
 						</div>
 
@@ -224,15 +234,17 @@ if($_SESSION["rol"] != "Administrador"){
 							
 							<h2>Usuario:</h2>
 
-							<input type="text" class="form-control input-lg" minlength="4" id="usuarioE" name="usuarioE" required>
+							<input type="text" class="form-control input-lg" minlength="4" id="usuarioE" name="usuarioE" required oninvalid="this.setCustomValidity('Ingrese el usuario (mínimo 4 carácteres)')"
+    				oninput="this.setCustomValidity('')">
 
 						</div>
 
 						<div class="form-group">
 							
-							<h2>Contraseña:</h2>
+							<h2>Contraseña:(*)</h2>
 
-							<input type="text" class="form-control input-lg" minlength="4" id="claveE" name="claveE" required>
+							<input type="text" class="form-control input-lg" minlength="4" id="claveE" name="claveE" required oninvalid="this.setCustomValidity('Ingrese la contraseña (mínimo 4 carácteres)')"
+    				oninput="this.setCustomValidity('')">
 
 						</div>
 

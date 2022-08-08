@@ -128,25 +128,29 @@ if($_SESSION["rol"] != "Secretaria" && $_SESSION["rol"] != "Administrador"){
 					<div class="box-body">
 						
 						<div class="form-group">
-							
-							<h2>Apellido:</h2>
+								<center><small>Los campos marcados con (*) son obligatorios para crear el doctor</small></center>
+							<h2>Apellido:(*)</h2>
 
-							<input type="text" class="form-control input-lg" name="apellido" id="apellido" required>
+							<input type="text" class="form-control input-lg" name="apellido" id="apellido" required oninvalid="this.setCustomValidity('Ingrese el apellido')"
+    				oninput="this.setCustomValidity('')">
+							
+
 							<input type="hidden" name="rolD" value="Doctor"required>
 
 						</div>
 
 						<div class="form-group">
 							
-							<h2>Nombre:</h2>
+							<h2>Nombre:(*)</h2>
 
-							<input type="text" class="form-control input-lg" name="nombre" id="nombre" required>
+							<input type="text" class="form-control input-lg" name="nombre" id="nombre" required oninvalid="this.setCustomValidity('Ingrese el nombre')"
+    				oninput="this.setCustomValidity('')">
 
 						</div>
 
 
 						<div class="form-group">
-							<h2>Sexo:</h2>
+							<h2>Sexo:(*)</h2>
 							<select class="form-control input-lg" name="sexo">
 								
 								<option>Seleccionar...</option>
@@ -159,8 +163,8 @@ if($_SESSION["rol"] != "Secretaria" && $_SESSION["rol"] != "Administrador"){
 						</div>
 
 						<div class="form-group">
-							<h2>Consultorio:</h2>
-							<select class="form-control input-lg" name="consultorio">
+							<h2>Consultorio:(*)</h2>
+							<select class="form-control input-lg" name="consultorio" >
 								
 								<option>Seleccionar...</option>
 
@@ -187,16 +191,18 @@ if($_SESSION["rol"] != "Secretaria" && $_SESSION["rol"] != "Administrador"){
 
 						<div class="form-group">
 							
-							<h2>Usuario:</h2>
+							<h2>Usuario:(*)</h2>
 
-							<input type="text" class="form-control input-lg" minlength="4" id="usuario" name="usuario" required>
+							<input type="text" class="form-control input-lg" minlength="4" id="usuario" name="usuario" required oninvalid="this.setCustomValidity('Ingrese el usuario (mínimo 4 carácteres)')"
+    				oninput="this.setCustomValidity('')">
 
 						</div>
 						<div class="form-group">
 							
-							<h2>Contraseña:</h2>
+							<h2>Contraseña:(*)</h2>
 
-							<input type="text" class="form-control input-lg" minlength="4" id="clave" name="clave" required>
+							<input type="text" class="form-control input-lg" minlength="4" id="clave" name="clave" required oninvalid="this.setCustomValidity('Ingrese la contraseña (mínimo 4 carácteres)')"
+    				oninput="this.setCustomValidity('')">
 
 						</div>
 
@@ -243,10 +249,11 @@ if($_SESSION["rol"] != "Secretaria" && $_SESSION["rol"] != "Administrador"){
 					<div class="box-body">
 						
 						<div class="form-group">
-							
-							<h2>Apellido:</h2>
+							<center><small>Los campos marcados con (*) son obligatorios para editar al doctor</small></center>
+							<h2>Apellido:(*)</h2>
 
-							<input type="text" class="form-control input-lg" id="apellidoE" name="apellidoE" required>
+							<input type="text" class="form-control input-lg" id="apellidoE" name="apellidoE" required oninvalid="this.setCustomValidity('Ingrese el apellido')"
+    				oninput="this.setCustomValidity('')">
 
 							<input type="hidden" id="Did" name="Did">
 
@@ -254,16 +261,17 @@ if($_SESSION["rol"] != "Secretaria" && $_SESSION["rol"] != "Administrador"){
 
 						<div class="form-group">
 							
-							<h2>Nombre:</h2>
+							<h2>Nombre:(*)</h2>
 
-							<input type="text" class="form-control input-lg" id="nombreE" name="nombreE" required>
+							<input type="text" class="form-control input-lg" id="nombreE" name="nombreE" required oninvalid="this.setCustomValidity('Ingrese el nombre')"
+    				oninput="this.setCustomValidity('')">
 
 						</div>
 
 
 						<div class="form-group">
 							
-							<h2>Sexo:</h2>
+							<h2>Sexo:(*)</h2>
 
 							<select class="form-control input-lg" name="sexoE" required="">
 								
@@ -278,16 +286,18 @@ if($_SESSION["rol"] != "Secretaria" && $_SESSION["rol"] != "Administrador"){
 
 						<div class="form-group">
 							
-							<h2>Usuario:</h2>
+							<h2>Usuario:(*)</h2>
 
-							<input type="text" class="form-control input-lg" minlength="4"  id="usuarioE" name="usuarioE" required>
+							<input type="text" class="form-control input-lg" minlength="4"  id="usuarioE" name="usuarioE" required oninvalid="this.setCustomValidity('Ingrese el nombre de usuario (mínimo 4 carácteres)')"
+    				oninput="this.setCustomValidity('')">
 						</div>
 
 						<div class="form-group">
 							
-							<h2>Contraseña:</h2>
+							<h2>Contraseña:(*)</h2>
 
-							<input type="text" class="form-control input-lg" minlength="4" id="claveE" name="claveE" required>
+							<input type="text" class="form-control input-lg" minlength="4" id="claveE" name="claveE" required oninvalid="this.setCustomValidity('Ingrese la contraseña (mínimo 4 carácteres)')"
+    				oninput="this.setCustomValidity('')">
 
 						</div>
 
